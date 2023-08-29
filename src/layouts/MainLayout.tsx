@@ -24,6 +24,7 @@ const MainLayout = ({ children }: IProps) => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
+        theme="dark"
       />
     </>
   );

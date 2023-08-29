@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store";
-import { addToCart } from "../store/reducers/cartSlice";
+import {
+  addToCart,
+  decrementQuantity,
+  incrementQuantity,
+} from "../store/reducers/cartSlice";
 import { toast } from "react-toastify";
 
 import { IProduct } from "../interfaces/product";
@@ -32,7 +36,8 @@ const Product = () => {
 
   const handleAddToCart = () => {
     console.log(productQuantity);
-    dispatch(addToCart({ ...product, quantity: productQuantity }));
+    const cartProduct = productData.find((item) => item._id === product?._id);
+    dispatch(addToCart(cartProduct));
     toast.success(`${product?.title} is added to your cart.`);
   };
 
@@ -84,16 +89,14 @@ const Product = () => {
             <p className="text-sm">Quantity</p>
             <div className="flex items-center gap-4 text-sm font-semibold">
               <button
-                onClick={() =>
-                  setProductQuantity((state) => (state > 0 ? state - 1 : 0))
-                }
+                onClick={() => dispatch(decrementQuantity(product))}
                 className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black"
               >
                 -
               </button>
               <span>{productQuantity}</span>
               <button
-                onClick={() => setProductQuantity((state) => state + 1)}
+                onClick={() => dispatch(incrementQuantity(product))}
                 className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black"
               >
                 +
