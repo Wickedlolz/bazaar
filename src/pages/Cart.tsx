@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store';
 import { resetCart } from '../store/reducers/cartSlice';
 import { toast } from 'react-toastify';
+// import StripeCheckout from 'react-stripe-checkout';
 
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 import CartItem from '../components/CartItem';
@@ -17,10 +18,11 @@ const Cart = () => {
     const [payNow, setPayNow] = useState<boolean>(false);
 
     useEffect(() => {
-        let price = 0;
-        productData.forEach((item) => {
-            price += item.price * item.quantity;
-        });
+        const price = productData.reduce(
+            (accumulator, currentValue) =>
+                accumulator + currentValue.price * currentValue.quantity,
+            0
+        );
 
         setTotalAmount(Number(price.toFixed(2)));
     }, [productData]);
@@ -122,6 +124,21 @@ const Cart = () => {
                     >
                         proceed to checkout
                     </button>
+                    {payNow && (
+                        <div className="w-full mt-6 flex items-center justify-center">
+                            {/* <StripeCheckout
+                                stripeKey={
+                                    process.env.REACT_APP_STRIPE_API_KEY!
+                                }
+                                name="Bazaar Online Shopping"
+                                amount={totalAmount * 100}
+                                label="Pay to bazaar"
+                                description={`Your Payment amount is $${totalAmount}`}
+                                // token={payment}
+                                email={user?.email!}
+                            /> */}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
