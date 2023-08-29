@@ -93,7 +93,14 @@ const Header = () => {
                             {productData.length}
                         </span>
                     </NavLink>
-                    <NavLink to="/profile">
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive
+                                ? 'border-[2px] border-orange-800 p-1 rounded-full'
+                                : ''
+                        }
+                        to="/profile"
+                    >
                         <img
                             className="rounded-full"
                             src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
