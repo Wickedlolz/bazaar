@@ -7,11 +7,14 @@ import { toast } from 'react-toastify';
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 import CartItem from '../components/CartItem';
 import CartHeader from '../assets/cart-header.jpeg';
+import { useFirebaseContext } from '../contexts/FirebaseContext';
 
 const Cart = () => {
     const { productData } = useAppSelector((state) => state.cart);
     const dispatch = useAppDispatch();
+    const { user } = useFirebaseContext();
     const [totalAmount, setTotalAmount] = useState<number>(0);
+    const [payNow, setPayNow] = useState<boolean>(false);
 
     useEffect(() => {
         let price = 0;
@@ -25,6 +28,15 @@ const Cart = () => {
     const handleResetCart = () => {
         dispatch(resetCart(null));
         toast.error('Your Cart is empty!');
+    };
+
+    const handleCheckout = () => {
+        if (user) {
+            setPayNow(true);
+        } else {
+            setPayNow(false);
+            toast.error('Please sign in to Checkout!');
+        }
     };
 
     if (productData.length === 0) {
@@ -104,7 +116,10 @@ const Cart = () => {
                             $ {totalAmount}
                         </span>
                     </p>
-                    <button className="text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300">
+                    <button
+                        onClick={handleCheckout}
+                        className="text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300"
+                    >
                         proceed to checkout
                     </button>
                 </div>

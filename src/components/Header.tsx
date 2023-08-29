@@ -1,9 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../store';
+import { useFirebaseContext } from '../contexts/FirebaseContext';
 
 import { BiShoppingBag } from 'react-icons/bi';
 
 const Header = () => {
+    const { user } = useFirebaseContext();
     const { productData } = useAppSelector((state) => state.cart);
 
     return (
@@ -99,16 +101,24 @@ const Header = () => {
                                 ? 'border-[2px] border-orange-800 p-1 rounded-full'
                                 : ''
                         }
-                        to="/profile"
+                        to="/login"
                     >
                         <img
                             className="rounded-full"
-                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
+                            src={
+                                user?.photoURL ||
+                                'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80'
+                            }
                             width={30}
                             height={30}
                             alt="User Profile"
                         />
                     </NavLink>
+                    {user && (
+                        <p className="text-base font-semibold underline">
+                            {user.displayName}
+                        </p>
+                    )}
                 </div>
             </nav>
         </header>

@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-
 import { useAppDispatch } from './store';
 import { fetchProducts } from './store/reducers/productsSlice';
 
 import MainLayout from './layouts/MainLayout';
 import AppRoutes from './routes/AppRoutes';
+import { FirebaseProvider } from './contexts/FirebaseContext';
 
 const App = () => {
     const dispatch = useAppDispatch();
@@ -14,9 +14,11 @@ const App = () => {
     }, [dispatch]);
 
     return (
-        <MainLayout>
-            <AppRoutes />
-        </MainLayout>
+        <FirebaseProvider>
+            <MainLayout>
+                <AppRoutes />
+            </MainLayout>
+        </FirebaseProvider>
     );
 };
 

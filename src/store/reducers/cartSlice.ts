@@ -3,12 +3,10 @@ import { IProduct } from '../../interfaces/product';
 
 interface CartState {
     productData: IProduct[];
-    userInfo: any;
 }
 
 const initialState: CartState = {
     productData: [],
-    userInfo: null,
 };
 
 export const cartSlice = createSlice({
@@ -33,6 +31,8 @@ export const cartSlice = createSlice({
 
             if (item) {
                 item.quantity++;
+            } else {
+                state.productData.push({ ...action.payload, quantity: 1 });
             }
         },
         decrementQuantity: (state, action) => {
