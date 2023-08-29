@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 import CartItem from '../components/CartItem';
+import CartHeader from '../assets/cart-header.jpeg';
 
 const Cart = () => {
     const { productData } = useAppSelector((state) => state.cart);
@@ -30,7 +31,7 @@ const Cart = () => {
         <div>
             <img
                 className="w-full h-60 object-cover"
-                src="https://images.pexels.com/photos/1435752/pexels-photo-1435752.jpeg?auto=compress&cs=tinysrgb&h=750&drp=1"
+                src={CartHeader}
                 alt="cart cover"
                 loading="lazy"
             />
