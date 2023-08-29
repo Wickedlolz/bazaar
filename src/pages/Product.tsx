@@ -12,21 +12,26 @@ const Product = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const { products } = useAppSelector((state) => state.bazaar);
+  const { productData } = useAppSelector((state) => state.cart);
   const [product, setProduct] = useState<IProduct | undefined>(undefined);
   const [productQuantity, setProductQuantity] = useState<number>(0);
 
   useEffect(() => {
-    const product = products.find((p) => p._id.toString() === id);
-    setProduct(product);
+    const selectedProduct = products.find((p) => p._id.toString() === id);
+    const cartProduct = productData.find((item) => item._id === product?._id);
+
+    setProduct(selectedProduct);
+    setProductQuantity(cartProduct?.quantity || 0);
 
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth",
     });
-  }, [id, products]);
+  }, [id, products, product, productData]);
 
   const handleAddToCart = () => {
+    console.log(productQuantity);
     dispatch(addToCart({ ...product, quantity: productQuantity }));
     toast.success(`${product?.title} is added to your cart.`);
   };
