@@ -27,6 +27,25 @@ const Cart = () => {
         toast.error('Your Cart is empty!');
     };
 
+    if (productData.length === 0) {
+        return (
+            <div className="max-w-screen-xl mx-auto py-32 flex flex-col items-center justify-center">
+                <h2 className="text-base font-semibold text-orange-900">
+                    Your Cart is Empty. Please go back to Shopping and add
+                    productsto Cart.
+                </h2>
+                <Link to="/">
+                    <button className="mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-300">
+                        <span>
+                            <HiOutlineArrowLeft />
+                        </span>
+                        go shopping
+                    </button>
+                </Link>
+            </div>
+        );
+    }
+
     return (
         <div>
             <img
