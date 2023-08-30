@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store';
 import { resetCart } from '../store/reducers/cartSlice';
+import StripeCheckout, { Token } from 'react-stripe-checkout';
 import { toast } from 'react-toastify';
-// import StripeCheckout from 'react-stripe-checkout';
 
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 import CartItem from '../components/CartItem';
@@ -39,6 +39,19 @@ const Cart = () => {
             setPayNow(false);
             toast.error('Please sign in to Checkout!');
         }
+    };
+
+    const payment = async (token: Token) => {
+        await fetch('https://iwindy-server.vercel.app/api/payment/pay', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                amount: totalAmount * 100,
+                token,
+            }),
+        });
     };
 
     if (productData.length === 0) {
@@ -126,7 +139,7 @@ const Cart = () => {
                     </button>
                     {payNow && (
                         <div className="w-full mt-6 flex items-center justify-center">
-                            {/* <StripeCheckout
+                            <StripeCheckout
                                 stripeKey={
                                     process.env.REACT_APP_STRIPE_API_KEY!
                                 }
@@ -134,9 +147,9 @@ const Cart = () => {
                                 amount={totalAmount * 100}
                                 label="Pay to bazaar"
                                 description={`Your Payment amount is $${totalAmount}`}
-                                // token={payment}
+                                token={payment}
                                 email={user?.email!}
-                            /> */}
+                            />
                         </div>
                     )}
                 </div>
