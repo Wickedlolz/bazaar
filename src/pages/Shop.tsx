@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { IProduct } from '../interfaces/product';
 
 import ProductBanner from '../components/ProductBanner';
 import ShopSideNav from '../components/ShopSideNav';
-import ProductCard from '../components/ProductCard';
+import ShopCard from '../components/ShopCard';
 
 const Shop = () => {
     const [products, setProducts] = useState<IProduct[] | null>(null);
@@ -38,9 +39,9 @@ const Shop = () => {
                     <ProductBanner
                         itemsPerPageFromBanner={itemsPerPageFromBanner}
                     />
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-4 lg:gap-10">
+                    <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                         {products?.map((product) => (
-                            <ProductCard key={product._id} product={product} />
+                            <ShopCard key={product._id} product={product} />
                         ))}
                     </div>
                 </div>
