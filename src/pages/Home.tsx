@@ -16,11 +16,10 @@ const Home = () => {
                     </h1>
                     <span className="w-20 h-[3px] bg-black"></span>
                     <p className="max-w-[700px] text-gray-600 text-center">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Expedita ipsam, accusantium excepturi officiis
-                        blanditiis iure. Mollitia neque aperiam libero corporis
-                        laudantium praesentium beatae, eligendi cupiditate vel
-                        cumque ea, ipsum deleniti?
+                        Keep an eye out for our daily deals and exclusive offers
+                        that make shopping even more exciting. Enjoy incredible
+                        savings on products that matter to you, turning your
+                        routine purchases into delightful experiences.
                     </p>
                 </div>
                 <div className="max-w-screen-xl mx-auto py-10 grid grid-cols-4 gap-10">
