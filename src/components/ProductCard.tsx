@@ -37,7 +37,7 @@ const ProductCard = ({ product }: IProps) => {
                 <div className="flex justify-between gap-4 items-center">
                     <div>
                         <h2 className="font-base font-bold">
-                            {product.title.substring(0, 15)}
+                            {product.title.substring(0, 10)}
                         </h2>
                     </div>
                     <div className="flex justify-end gap-2 relative overflow-hidden w-28 text-sm">
@@ -57,7 +57,7 @@ const ProductCard = ({ product }: IProps) => {
                         </div>
                         <p
                             onClick={handleAddToCart}
-                            className="absolute z-20 w-[100px] text-gray-500 hover:text-gray-900 flex items-center gap-1 top-0 transform -translate-x-32 group-hover:translate-x-0 transition-transform cursor-pointer duration-500"
+                            className="absolute z-20 w-[100px] text-gray-500 hover:text-gray-900 flex items-center gap-1 top-0 transform -translate-x-36 group-hover:translate-x-0 transition-transform cursor-pointer duration-500"
                         >
                             add to cart{' '}
                             <span>
