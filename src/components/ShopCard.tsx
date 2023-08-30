@@ -7,12 +7,12 @@ interface IProps {
 
 const ShopCard = ({ product }: IProps) => {
     return (
-        <div className="group relative">
-            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+        <article className="group relative">
+            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">
                 <img
                     src={product.image}
                     alt={product.title}
-                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                    className="h-full w-full object-cover object-center group-hover:scale-110 duration-500 lg:h-full lg:w-full"
                     loading="lazy"
                 />
             </div>
@@ -46,7 +46,14 @@ const ShopCard = ({ product }: IProps) => {
                     </p>
                 </div>
             </div>
-        </div>
+            <div className="absolute top-4 right-0">
+                {product.isNew && (
+                    <p className="bg-black text-white font-semibold px-6 py-1">
+                        Sale
+                    </p>
+                )}
+            </div>
+        </article>
     );
 };
 

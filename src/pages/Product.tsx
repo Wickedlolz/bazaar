@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store';
 import { addToCart } from '../store/reducers/cartSlice';
+import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 
 import { IProduct } from '../interfaces/product';
@@ -39,6 +40,12 @@ const Product = () => {
 
     return (
         <div className="max-w-screen-xl mx-auto my-10 flex gap-10">
+            <Helmet>
+                <title>
+                    {product?.title || 'Product'} | Bazaar - A Modern Shopping
+                    App
+                </title>
+            </Helmet>
             <div className="w-2/5 relative">
                 <img
                     className="w-full h-[550px] object-cover"

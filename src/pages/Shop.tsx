@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 import { IProduct } from '../interfaces/product';
 
@@ -25,6 +26,9 @@ const Shop = () => {
 
     return (
         <div className="max-w-container mx-auto px-4">
+            <Helmet>
+                <title>Shop | Bazaar - A Modern Shopping App</title>
+            </Helmet>
             <div className="w-full py-10 xl:py-10 flex flex-col gap-3">
                 <h1 className="text-5xl text-primeColor font-titleFont font-bold">
                     Products

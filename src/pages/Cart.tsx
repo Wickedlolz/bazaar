@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store';
 import { resetCart } from '../store/reducers/cartSlice';
 import StripeCheckout, { Token } from 'react-stripe-checkout';
+import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 
 import { HiOutlineArrowLeft } from 'react-icons/hi';
@@ -57,6 +58,9 @@ const Cart = () => {
     if (productData.length === 0) {
         return (
             <div className="max-w-screen-xl mx-auto py-32 flex flex-col items-center justify-center">
+                <Helmet>
+                    <title>Cart | Bazaar - A Modern Shopping App</title>
+                </Helmet>
                 <h2 className="text-base font-semibold text-orange-900">
                     Your Cart is Empty. Please go back to Shopping and add
                     productsto Cart.
@@ -75,6 +79,9 @@ const Cart = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Cart | Bazaar - A Modern Shopping App</title>
+            </Helmet>
             <img
                 className="w-full h-60 object-cover"
                 src={CartHeader}
@@ -84,7 +91,7 @@ const Cart = () => {
             <div className="max-w-screen-xl mx-auto py-20 flex">
                 <div className="w-2/3 pr-10">
                     <div className="w-full">
-                        <h2 className="text-2xl">shopping cart</h2>
+                        <h2 className="text-2xl">Shopping Cart</h2>
                     </div>
                     <div>
                         {productData.map((item) => (
@@ -110,7 +117,7 @@ const Cart = () => {
                 </div>
                 <div className="w-1/3 bg-[#fafafa] py-6 px-4">
                     <div className="flex flex-col gap-6 border-b-[1px] border-b-gray-400 pb-6">
-                        <h2 className="text-2xl font-medium">cart totals</h2>
+                        <h2 className="text-2xl font-medium">Cart Totals</h2>
                         <p className="flex items-center gap-4 text-base">
                             Subtotal{' '}
                             <span className="font-bold text-lg">

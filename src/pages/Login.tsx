@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useFirebaseContext } from '../contexts/FirebaseContext';
-
+import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 
 import { FcGoogle } from 'react-icons/fc';
@@ -29,6 +29,9 @@ const Login = () => {
 
     return (
         <div className="w-full flex flex-col items-center justify-center gap-10 py-20">
+            <Helmet>
+                <title>Login | Bazaar - A Modern Shopping App</title>
+            </Helmet>
             <div className="w-full flex items-center justify-center gap-10">
                 {!user ? (
                     <div

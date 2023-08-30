@@ -1,4 +1,5 @@
 import { useAppSelector } from '../store';
+import { Helmet } from 'react-helmet-async';
 
 import Banner from '../components/Banner';
 import ProductCard from '../components/ProductCard';
@@ -8,6 +9,9 @@ const Home = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Home | Bazaar - A Modern Shopping App</title>
+            </Helmet>
             <Banner />
             <div className="py-10">
                 <div className="flex flex-col items-center gap-4">
