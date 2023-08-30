@@ -1,3 +1,11 @@
 {
-    "cart_title_lbl": "Количка"
+    "cart_title_lbl": "Количка",
+    "shop_everyday_title": "Пазарувай всеки ден",
+    "shop_everyday_desc": "Следете нашите ежедневни сделки и ексклузивни оферти, които правят пазаруването още по-вълнуващо. Насладете се на невероятни спестявания от важни за вас продукти, превръщайки рутинните си покупки в приятни изживявания.",
+    "product_sale_lbl": "Разпродажба",
+    "product_add_to_cart_hover_lbl": "Количка",
+    "product_add_to_cart_lbl": "Добави във количката",
+    "product_category_lbl": "Категория",
+    "product_customer_review": "оценка",
+    "product_quantity": "Количество"
 }

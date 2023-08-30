@@ -1,3 +1,11 @@
 {
-    "cart_title_lbl": "Shopping Cart"
+    "cart_title_lbl": "Shopping Cart",
+    "shop_everyday_title": "Shopping everyday",
+    "shop_everyday_desc": "Keep an eye out for our daily deals and exclusive offers that make shopping even more exciting. Enjoy incredible savings on products that matter to you, turning your routine purchases into delightful experiences.",
+    "product_sale_lbl": "Sale",
+    "product_add_to_cart_hover_lbl": "add to cart",
+    "product_add_to_cart_lbl": "add to cart",
+    "product_category_lbl": "Category",
+    "product_customer_review": "Customer review",
+    "product_quantity": "Quantity"
 }

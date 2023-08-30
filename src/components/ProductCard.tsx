@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
-
 import { useAppDispatch } from '../store';
 import { addToCart } from '../store/reducers/cartSlice';
+import { FormattedMessage } from 'react-intl';
+import { toast } from 'react-toastify';
+
 import { IProduct } from '../interfaces/product';
 
 import { BsArrowRight } from 'react-icons/bs';
@@ -59,7 +60,7 @@ const ProductCard = ({ product }: IProps) => {
                             onClick={handleAddToCart}
                             className="absolute z-20 w-[100px] text-gray-500 hover:text-gray-900 flex items-center gap-1 top-0 transform -translate-x-32 group-hover:translate-x-0 transition-transform cursor-pointer duration-500"
                         >
-                            add to cart{' '}
+                            <FormattedMessage id="product_add_to_cart_hover_lbl" />{' '}
                             <span>
                                 <BsArrowRight />
                             </span>
@@ -72,7 +73,7 @@ const ProductCard = ({ product }: IProps) => {
                 <div className="absolute top-4 right-0">
                     {product.isNew && (
                         <p className="bg-black text-white font-semibold px-6 py-1">
-                            Sale
+                            <FormattedMessage id="product_sale_lbl" />
                         </p>
                     )}
                 </div>

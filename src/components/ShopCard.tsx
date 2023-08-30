@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import { IProduct } from '../interfaces/product';
 
 interface IProps {
@@ -49,7 +50,7 @@ const ShopCard = ({ product }: IProps) => {
             <div className="absolute top-4 right-0">
                 {product.isNew && (
                     <p className="bg-black text-white font-semibold px-6 py-1">
-                        Sale
+                        <FormattedMessage id="product_sale_lbl" />
                     </p>
                 )}
             </div>

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store';
 import { addToCart } from '../store/reducers/cartSlice';
 import { Helmet } from 'react-helmet-async';
+import { FormattedMessage } from 'react-intl';
 import { toast } from 'react-toastify';
 
 import { IProduct } from '../interfaces/product';
@@ -57,7 +58,7 @@ const Product = () => {
                 <div className="absolute top-4 right-0">
                     {product?.isNew && (
                         <p className="bg-black text-white font-semibold px-8 py-1">
-                            Sale
+                            <FormattedMessage id="product_sale_lbl" />
                         </p>
                     )}
                 </div>
@@ -88,14 +89,18 @@ const Product = () => {
                         <MdOutlineStar className="peer peer-hover:text-yellow-500 hover:text-yellow-500 cursor-pointer" />
                         <MdOutlineStar className="peer peer-hover:text-yellow-500 hover:text-yellow-500 cursor-pointer" />
                     </div>
-                    <p className="text-xs text-gray-500">(1 Customer review)</p>
+                    <p className="text-xs text-gray-500">
+                        (1 <FormattedMessage id="product_customer_review" />)
+                    </p>
                 </div>
                 <p className="text-base text-gray-500 mt-3">
                     {product?.description}
                 </p>
                 <div className="flex gap-4">
                     <div className="w-52 flex items-center justify-between text-gray-500 gap-4 border p-3">
-                        <p className="text-sm">Quantity</p>
+                        <p className="text-sm">
+                            <FormattedMessage id="product_quantity" />
+                        </p>
                         <div className="flex items-center gap-4 text-sm font-semibold">
                             <button
                                 onClick={() =>
@@ -123,11 +128,11 @@ const Product = () => {
                         className="bg-black text-white py-3 px-6 active:bg-gray-800 disabled:bg-gray-500 disabled:cursor-not-allowed"
                         onClick={handleAddToCart}
                     >
-                        add to cart
+                        <FormattedMessage id="product_add_to_cart_lbl" />
                     </button>
                 </div>
                 <p className="text-base text-gray-500">
-                    Category:{' '}
+                    <FormattedMessage id="product_category_lbl" />:{' '}
                     <span className="font-medium capitalize">
                         {product?.category}
                     </span>
