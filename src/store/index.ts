@@ -9,13 +9,14 @@ import {
     PERSIST,
     PURGE,
     REGISTER,
+    PersistConfig,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import productReducer from './reducers/productsSlice';
-import cartReducer from './reducers/cartSlice';
+import cartReducer, { CartState } from './reducers/cartSlice';
 
-const persistConfig = {
+const persistConfig: PersistConfig<CartState> = {
     key: 'root',
     version: 1,
     storage,
