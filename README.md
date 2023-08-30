@@ -8,7 +8,7 @@ Discover a curated collection of fashion-forward clothing for both men and women
 
 ## Effortless Shopping:
 
-Say goodbye to crowded malls and long queues. With [Your App Name], shopping becomes an effortless and enjoyable experience. Browse through products using intuitive filters and categories, making it easy to find exactly what you're looking for. High-quality images and detailed descriptions provide an accurate representation of each item, so you can make informed decisions from the comfort of your home.
+Say goodbye to crowded malls and long queues. With Bazaar, shopping becomes an effortless and enjoyable experience. Browse through products using intuitive filters and categories, making it easy to find exactly what you're looking for. High-quality images and detailed descriptions provide an accurate representation of each item, so you can make informed decisions from the comfort of your home.
 
 ## Secure and Convenient Payments:
 
@@ -16,11 +16,11 @@ We prioritize your security, which is why we've integrated the trusted Stripe pa
 
 ## Personalized Recommendations:
 
-Experience shopping that understands you. Through advanced AI algorithms, [Your App Name] learns your preferences and shopping habits, offering personalized product recommendations that align with your style. Discover new items that resonate with your taste and elevate your shopping journey.
+Experience shopping that understands you. Through advanced AI algorithms, Bazaar learns your preferences and shopping habits, offering personalized product recommendations that align with your style. Discover new items that resonate with your taste and elevate your shopping journey.
 
 ## Sleek and User-Friendly Interface:
 
-Our app boasts a modern and intuitive design that enhances your shopping adventure. Effortlessly navigate through different sections, easily add items to your cart, and enjoy a smooth checkout process. Whether you're a tech-savvy individual or someone new to online shopping, [Your App Name] provides an accessible and enjoyable interface for all.
+Our app boasts a modern and intuitive design that enhances your shopping adventure. Effortlessly navigate through different sections, easily add items to your cart, and enjoy a smooth checkout process. Whether you're a tech-savvy individual or someone new to online shopping, Bazaar provides an accessible and enjoyable interface for all.
 
 Elevate your shopping game with [Your App Name] and experience the future of retail right at your fingertips. Download the app now and embark on a journey of style, convenience, and innovation.
 
