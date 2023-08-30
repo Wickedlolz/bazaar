@@ -5,6 +5,7 @@ import { fetchProducts } from './store/reducers/productsSlice';
 import MainLayout from './layouts/MainLayout';
 import AppRoutes from './routes/AppRoutes';
 import { FirebaseProvider } from './contexts/FirebaseContext';
+import Locales from './components/Locales';
 
 const App = () => {
     const dispatch = useAppDispatch();
@@ -15,9 +16,11 @@ const App = () => {
 
     return (
         <FirebaseProvider>
-            <MainLayout>
-                <AppRoutes />
-            </MainLayout>
+            <Locales>
+                <MainLayout>
+                    <AppRoutes />
+                </MainLayout>
+            </Locales>
         </FirebaseProvider>
     );
 };

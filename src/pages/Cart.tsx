@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../store';
 import { resetCart } from '../store/reducers/cartSlice';
 import StripeCheckout, { Token } from 'react-stripe-checkout';
 import { Helmet } from 'react-helmet-async';
+import { FormattedMessage } from 'react-intl';
 import { toast } from 'react-toastify';
 
 import { HiOutlineArrowLeft } from 'react-icons/hi';
@@ -91,7 +92,9 @@ const Cart = () => {
             <div className="max-w-screen-xl mx-auto py-20 flex">
                 <div className="w-2/3 pr-10">
                     <div className="w-full">
-                        <h2 className="text-2xl">Shopping Cart</h2>
+                        <h2 className="text-2xl">
+                            <FormattedMessage id="cart_title_lbl" />
+                        </h2>
                     </div>
                     <div>
                         {productData.map((item) => (
