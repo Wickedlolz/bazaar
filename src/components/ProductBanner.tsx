@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { BsGridFill } from 'react-icons/bs';
 import { ImList } from 'react-icons/im';
@@ -9,27 +9,40 @@ interface IProps {
 }
 
 const ProductBanner = ({ itemsPerPageFromBanner }: IProps) => {
-    const [girdViewActive, setGridViewActive] = useState(true);
-    const [listViewActive, setListViewActive] = useState(false);
+    const [girdViewActive, setGridViewActive] = useState<boolean>(true);
+    const [listViewActive, setListViewActive] = useState<boolean>(false);
+    const gridViewRef = useRef<HTMLSpanElement | null>(null);
+    const listViewRef = useRef<HTMLSpanElement | null>(null);
+    const gridViewEl = gridViewRef.current;
+    const listViewEl = listViewRef.current;
 
     useEffect(() => {
-        const gridView = document.querySelector('.gridView');
-        const listView = document.querySelector('.listView');
-
-        gridView?.addEventListener('click', () => {
+        gridViewRef?.current?.addEventListener('click', () => {
             setListViewActive(false);
             setGridViewActive(true);
         });
-        listView?.addEventListener('click', () => {
+        listViewRef?.current?.addEventListener('click', () => {
             setGridViewActive(false);
             setListViewActive(true);
         });
-    }, [girdViewActive, listViewActive]);
+
+        return () => {
+            gridViewEl?.removeEventListener('click', () => {
+                setListViewActive(false);
+                setGridViewActive(true);
+            });
+            listViewEl?.removeEventListener('click', () => {
+                setGridViewActive(false);
+                setListViewActive(true);
+            });
+        };
+    }, [girdViewActive, listViewActive, gridViewEl, listViewEl]);
 
     return (
         <div className="w-full flex flex-col md:flex-row md:items-center justify-between">
             <div className="flex items-center gap-4">
                 <span
+                    ref={gridViewRef}
                     className={`${
                         girdViewActive
                             ? 'bg-primeColor text-white'
@@ -39,6 +52,7 @@ const ProductBanner = ({ itemsPerPageFromBanner }: IProps) => {
                     <BsGridFill />
                 </span>
                 <span
+                    ref={listViewRef}
                     className={`${
                         listViewActive
                             ? 'bg-primeColor text-white'
