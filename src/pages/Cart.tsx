@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../store';
 import { resetCart } from '../store/reducers/cartSlice';
 import StripeCheckout, { Token } from 'react-stripe-checkout';
 import { Helmet } from 'react-helmet-async';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
 import { HiOutlineArrowLeft } from 'react-icons/hi';
@@ -16,6 +16,7 @@ const Cart = () => {
     const { productData } = useAppSelector((state) => state.cart);
     const dispatch = useAppDispatch();
     const { user } = useFirebaseContext();
+    const intl = useIntl();
     const [totalAmount, setTotalAmount] = useState<number>(0);
     const [payNow, setPayNow] = useState<boolean>(false);
 
@@ -60,7 +61,9 @@ const Cart = () => {
         return (
             <div className="max-w-screen-xl mx-auto py-32 flex flex-col items-center justify-center">
                 <Helmet>
-                    <title>Cart | Bazaar - A Modern Shopping App</title>
+                    <title>
+                        Cart {intl.formatMessage({ id: 'page_title' }) || ''}
+                    </title>
                 </Helmet>
                 <h2 className="text-base font-semibold text-orange-900">
                     Your Cart is Empty. Please go back to Shopping and add

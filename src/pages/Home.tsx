@@ -1,17 +1,20 @@
 import { useAppSelector } from '../store';
 import { Helmet } from 'react-helmet-async';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import Banner from '../components/Banner';
 import ProductCard from '../components/ProductCard';
 
 const Home = () => {
+    const intl = useIntl();
     const { products } = useAppSelector((state) => state.bazaar);
 
     return (
         <div>
             <Helmet>
-                <title>Home | Bazaar - A Modern Shopping App</title>
+                <title>
+                    Home {intl.formatMessage({ id: 'page_title' }) || ''}
+                </title>
             </Helmet>
             <Banner />
             <div className="py-10">

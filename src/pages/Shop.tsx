@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useAppSelector } from '../store';
 import { Helmet } from 'react-helmet-async';
+import { useIntl } from 'react-intl';
 
 import ProductBanner from '../components/ProductBanner';
 import ShopSideNav from '../components/ShopSideNav';
 import ShopCard from '../components/ShopCard';
 
 const Shop = () => {
+    const intl = useIntl();
     const products = useAppSelector((state) => state.bazaar.products);
     const [itemsPerPage, setItemsPerPage] = useState<number>(12);
 
@@ -17,7 +19,9 @@ const Shop = () => {
     return (
         <div className="max-w-container mx-auto px-4">
             <Helmet>
-                <title>Shop | Bazaar - A Modern Shopping App</title>
+                <title>
+                    Shop {intl.formatMessage({ id: 'page_title' }) || ''}
+                </title>
             </Helmet>
             <div className="w-full py-10 xl:py-10 flex flex-col gap-3">
                 <h1 className="text-5xl text-primeColor font-titleFont font-bold">
