@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch } from './store';
 import { fetchProducts } from './store/reducers/productsSlice';
+import { HelmetProvider } from 'react-helmet-async';
 
 import MainLayout from './layouts/MainLayout';
 import AppRoutes from './routes/AppRoutes';
@@ -16,11 +17,13 @@ const App = () => {
 
     return (
         <FirebaseProvider>
-            <Locales>
-                <MainLayout>
-                    <AppRoutes />
-                </MainLayout>
-            </Locales>
+            <HelmetProvider>
+                <Locales>
+                    <MainLayout>
+                        <AppRoutes />
+                    </MainLayout>
+                </Locales>
+            </HelmetProvider>
         </FirebaseProvider>
     );
 };
