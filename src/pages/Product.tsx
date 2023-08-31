@@ -34,7 +34,15 @@ const Product = () => {
         });
     }, [id, products, product, productData]);
 
-    const handleAddToCart = () => {
+    /**
+     * Handles the action of adding a product to the cart.
+     *
+     * This function dispatches an 'addToCart' action with the product information and quantity,
+     * and displays a success toast message indicating that the product has been added to the cart.
+     *
+     * @returns {void}
+     */
+    const handleAddToCart = (): void => {
         dispatch(addToCart({ ...product, quantity: productQuantity }));
         toast.success(`${product?.title} is added to your cart.`);
     };

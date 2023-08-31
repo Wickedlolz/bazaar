@@ -9,7 +9,15 @@ const Login = () => {
     const { user, signInWithGoogle, logOut } = useFirebaseContext();
     const navigate = useNavigate();
 
-    const handleGoogleLogin = () => {
+    /**
+     * Handles the process of user authentication through Google sign-in.
+     *
+     * This function initiates the Google sign-in process using the 'signInWithGoogle' function,
+     * and upon successful authentication, navigates the user to the home page.
+     *
+     * @returns {void}
+     */
+    const handleGoogleLogin = (): void => {
         signInWithGoogle().then(() => {
             navigate('/');
         });
