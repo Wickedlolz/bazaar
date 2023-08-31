@@ -32,7 +32,7 @@ const Cart = () => {
 
     const handleResetCart = () => {
         dispatch(resetCart(null));
-        toast.error('Your Cart is empty!');
+        toast.error(intl.formatMessage({ id: 'cart_empty_lbl' }));
     };
 
     const handleCheckout = () => {
@@ -40,7 +40,7 @@ const Cart = () => {
             setPayNow(true);
         } else {
             setPayNow(false);
-            toast.error('Please sign in to Checkout!');
+            toast.error(intl.formatMessage({ id: 'cart_sign_in' }));
         }
     };
 
@@ -66,15 +66,14 @@ const Cart = () => {
                     </title>
                 </Helmet>
                 <h2 className="text-base font-semibold text-orange-900">
-                    Your Cart is Empty. Please go back to Shopping and add
-                    productsto Cart.
+                    <FormattedMessage id="cart_is_empty_lbl" />
                 </h2>
                 <Link to="/">
                     <button className="mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-300">
                         <span>
                             <HiOutlineArrowLeft />
                         </span>
-                        go shopping
+                        <FormattedMessage id="cart_go_shopping_btn" />
                     </button>
                 </Link>
             </div>
@@ -84,7 +83,9 @@ const Cart = () => {
     return (
         <div>
             <Helmet>
-                <title>Cart | Bazaar - A Modern Shopping App</title>
+                <title>
+                    Cart {intl.formatMessage({ id: 'page_title' }) || ''}
+                </title>
             </Helmet>
             <img
                 className="w-full h-60 object-cover"
@@ -109,7 +110,7 @@ const Cart = () => {
                             onClick={handleResetCart}
                             className="bg-red-500 text-white mt-8 ml-7 py-1 px-6 hover:bg-red-800 duration-300"
                         >
-                            Reset Cart
+                            <FormattedMessage id="cart_reset_cart_lbl" />
                         </button>
                     )}
                     <Link to="/">
@@ -117,21 +118,23 @@ const Cart = () => {
                             <span>
                                 <HiOutlineArrowLeft />
                             </span>
-                            go shopping
+                            <FormattedMessage id="cart_go_shopping_btn" />
                         </button>
                     </Link>
                 </div>
                 <div className="w-1/3 bg-[#fafafa] py-6 px-4">
                     <div className="flex flex-col gap-6 border-b-[1px] border-b-gray-400 pb-6">
-                        <h2 className="text-2xl font-medium">Cart Totals</h2>
+                        <h2 className="text-2xl font-medium">
+                            <FormattedMessage id="cart_totals" />
+                        </h2>
                         <p className="flex items-center gap-4 text-base">
-                            Subtotal{' '}
+                            <FormattedMessage id="cart_subtotal" />{' '}
                             <span className="font-bold text-lg">
                                 $ {totalAmount}
                             </span>
                         </p>
                         <p className="flex items-start gap-4 text-base">
-                            Shipping{' '}
+                            <FormattedMessage id="cart_shipping" />{' '}
                             <span>
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Veniam, quia.
@@ -139,7 +142,7 @@ const Cart = () => {
                         </p>
                     </div>
                     <p className="font-semibold flex justify-between mt-6">
-                        Total{' '}
+                        <FormattedMessage id="cart_total" />{' '}
                         <span className="text-xl font-bold">
                             $ {totalAmount}
                         </span>
@@ -148,7 +151,7 @@ const Cart = () => {
                         onClick={handleCheckout}
                         className="text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300"
                     >
-                        proceed to checkout
+                        <FormattedMessage id="cart_proceed_to_checkout" />
                     </button>
                     {payNow && (
                         <div className="w-full mt-6 flex items-center justify-center">
