@@ -1,28 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useAppSelector } from '../store';
 import { Helmet } from 'react-helmet-async';
-
-import { IProduct } from '../interfaces/product';
 
 import ProductBanner from '../components/ProductBanner';
 import ShopSideNav from '../components/ShopSideNav';
 import ShopCard from '../components/ShopCard';
 
 const Shop = () => {
-    const [products, setProducts] = useState<IProduct[] | null>(null);
+    const products = useAppSelector((state) => state.bazaar.products);
     const [itemsPerPage, setItemsPerPage] = useState<number>(12);
 
     const itemsPerPageFromBanner = (itemsPerPage: number) => {
         setItemsPerPage(itemsPerPage);
     };
-
-    useEffect(() => {
-        fetch('https://fakestoreapiserver.reactbd.com/nextamazon')
-            .then((res) => res.json())
-            .then((data) => {
-                setProducts(data);
-            })
-            .catch((error) => console.log(error));
-    }, []);
 
     return (
         <div className="max-w-container mx-auto px-4">
