@@ -11,6 +11,8 @@ const Shop = () => {
     const intl = useIntl();
     const products = useAppSelector((state) => state.bazaar.products);
     const [itemsPerPage, setItemsPerPage] = useState<number>(12);
+    const [girdViewActive, setGridViewActive] = useState<boolean>(true);
+    const [listViewActive, setListViewActive] = useState<boolean>(false);
 
     const itemsPerPageFromBanner = (itemsPerPage: number) => {
         setItemsPerPage(itemsPerPage);
@@ -35,8 +37,18 @@ const Shop = () => {
                 <div className="w-full md:w-[80%] lg:w-[75%] h-full flex flex-col gap-10">
                     <ProductBanner
                         itemsPerPageFromBanner={itemsPerPageFromBanner}
+                        girdViewActive={girdViewActive}
+                        listViewActive={listViewActive}
+                        setGridViewActive={setGridViewActive}
+                        setListViewActive={setListViewActive}
                     />
-                    <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    <div
+                        className={
+                            girdViewActive
+                                ? 'mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'
+                                : 'mt-6 flex flex-col gap-x-6 gap-y-10'
+                        }
+                    >
                         {products?.map((product) => (
                             <ShopCard key={product._id} product={product} />
                         ))}

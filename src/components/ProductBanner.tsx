@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, Dispatch, SetStateAction } from 'react';
 
 import { BsGridFill } from 'react-icons/bs';
 import { ImList } from 'react-icons/im';
@@ -6,11 +6,19 @@ import { GoTriangleDown } from 'react-icons/go';
 
 interface IProps {
     itemsPerPageFromBanner: (page: number) => void;
+    girdViewActive: boolean;
+    listViewActive: boolean;
+    setGridViewActive: Dispatch<SetStateAction<boolean>>;
+    setListViewActive: Dispatch<SetStateAction<boolean>>;
 }
 
-const ProductBanner = ({ itemsPerPageFromBanner }: IProps) => {
-    const [girdViewActive, setGridViewActive] = useState<boolean>(true);
-    const [listViewActive, setListViewActive] = useState<boolean>(false);
+const ProductBanner = ({
+    itemsPerPageFromBanner,
+    girdViewActive,
+    setGridViewActive,
+    listViewActive,
+    setListViewActive,
+}: IProps) => {
     const gridViewRef = useRef<HTMLSpanElement | null>(null);
     const listViewRef = useRef<HTMLSpanElement | null>(null);
     const gridViewEl = gridViewRef.current;
@@ -36,7 +44,14 @@ const ProductBanner = ({ itemsPerPageFromBanner }: IProps) => {
                 setListViewActive(true);
             });
         };
-    }, [girdViewActive, listViewActive, gridViewEl, listViewEl]);
+    }, [
+        girdViewActive,
+        listViewActive,
+        gridViewEl,
+        listViewEl,
+        setGridViewActive,
+        setListViewActive,
+    ]);
 
     return (
         <div className="w-full flex flex-col md:flex-row md:items-center justify-between">
