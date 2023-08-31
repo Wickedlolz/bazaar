@@ -5,6 +5,7 @@ import {
     incrementQuantity,
 } from '../store/reducers/cartSlice';
 import { toast } from 'react-toastify';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { IProduct } from '../interfaces/product';
 
@@ -16,10 +17,15 @@ interface IProps {
 
 const CartItem = ({ item }: IProps) => {
     const dispatch = useAppDispatch();
+    const intl = useIntl();
 
     const handleDeleteItem = () => {
         dispatch(deleteItem(item));
-        toast.error(`${item.title} is removed.`);
+        toast.error(
+            `${item.title} ${intl.formatMessage({
+                id: 'cart_product_removed',
+            })}`
+        );
     };
 
     return (
@@ -38,7 +44,9 @@ const CartItem = ({ item }: IProps) => {
             </div>
             <h2 className="w-52">{item.title}</h2>
             <p className="w-10">${item.price}</p>
-            <p className="text-sm">Quantity</p>
+            <p className="text-sm">
+                <FormattedMessage id="product_quantity" />
+            </p>
             <div className="flex items-center gap-4 text-sm font-semibold">
                 <button
                     disabled={item.quantity === 0}
