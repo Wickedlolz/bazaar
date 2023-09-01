@@ -5,7 +5,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase-config';
 
 export const fetchProducts = createAsyncThunk(FETCH_PRODUCTS, async () => {
-    const data = await getDocs(collection(db, 'products'));
+    const data = await getDocs(collection(db, 'allProducts'));
 
     const products = data.docs.map((doc) => ({
         _id: doc.id as string,
@@ -26,23 +26,20 @@ export const fetchProducts = createAsyncThunk(FETCH_PRODUCTS, async () => {
 
 export interface ProductsState {
     products: IProduct[];
-    selectedProduct: IProduct | null;
+    selectedCategory: string;
 }
 
 const initialState: ProductsState = {
     products: [],
-    selectedProduct: null,
+    selectedCategory: 'all',
 };
 
 export const productsSlice = createSlice({
     name: 'bazaar',
     initialState,
     reducers: {
-        loadProducts: (state, action) => {
-            state.products = action.payload;
-        },
-        setSelectedProduct: (state, action) => {
-            state.selectedProduct = action.payload;
+        changeCategory: (state, action) => {
+            state.selectedCategory = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -52,6 +49,6 @@ export const productsSlice = createSlice({
     },
 });
 
-export const { loadProducts, setSelectedProduct } = productsSlice.actions;
+export const { changeCategory } = productsSlice.actions;
 
 export default productsSlice.reducer;

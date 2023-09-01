@@ -9,7 +9,9 @@ import ShopCard from '../components/ShopCard';
 
 const Shop = () => {
     const intl = useIntl();
-    const products = useAppSelector((state) => state.bazaar.products);
+    const { products, selectedCategory } = useAppSelector(
+        (state) => state.bazaar
+    );
     const [itemsPerPage, setItemsPerPage] = useState<number>(12);
     const [girdViewActive, setGridViewActive] = useState<boolean>(true);
     const [listViewActive, setListViewActive] = useState<boolean>(false);
@@ -17,6 +19,13 @@ const Shop = () => {
     const itemsPerPageFromBanner = (itemsPerPage: number) => {
         setItemsPerPage(itemsPerPage);
     };
+
+    const filteredProducts =
+        selectedCategory === 'all'
+            ? products
+            : products.filter(
+                  (product) => product.category === selectedCategory
+              );
 
     return (
         <div className="max-w-container mx-auto px-4">
@@ -49,9 +58,11 @@ const Shop = () => {
                                 : 'mt-6 flex flex-col gap-x-6 gap-y-10'
                         }
                     >
-                        {products?.map((product) => (
-                            <ShopCard key={product._id} product={product} />
-                        ))}
+                        {filteredProducts
+                            ?.slice(0, itemsPerPage)
+                            .map((product) => (
+                                <ShopCard key={product._id} product={product} />
+                            ))}
                     </div>
                 </div>
             </div>
