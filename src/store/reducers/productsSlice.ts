@@ -4,6 +4,7 @@ import { IProduct } from '../../interfaces/product';
 import { collection, getDocs, limit, query } from 'firebase/firestore';
 import { db } from '../../firebase-config';
 import { PAGE_SIZE } from '../../utils/constants';
+import { IPrice } from '../../interfaces/priceList';
 
 export const fetchProducts = createAsyncThunk(FETCH_PRODUCTS, async () => {
     const paginationQuery = query(
@@ -32,11 +33,13 @@ export const fetchProducts = createAsyncThunk(FETCH_PRODUCTS, async () => {
 export interface ProductsState {
     products: IProduct[];
     selectedCategory: string;
+    selectedPriceRange: IPrice | string;
 }
 
 const initialState: ProductsState = {
     products: [],
     selectedCategory: 'all',
+    selectedPriceRange: 'all',
 };
 
 export const productsSlice = createSlice({
@@ -46,6 +49,9 @@ export const productsSlice = createSlice({
         changeCategory: (state, action) => {
             state.selectedCategory = action.payload;
         },
+        changePriceRange: (state, action) => {
+            state.selectedPriceRange = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchProducts.fulfilled, (state, action) => {
@@ -54,6 +60,6 @@ export const productsSlice = createSlice({
     },
 });
 
-export const { changeCategory } = productsSlice.actions;
+export const { changeCategory, changePriceRange } = productsSlice.actions;
 
 export default productsSlice.reducer;

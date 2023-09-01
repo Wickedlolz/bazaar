@@ -6,10 +6,11 @@ import { useIntl } from 'react-intl';
 import ProductBanner from '../components/ProductBanner';
 import ShopSideNav from '../components/ShopSideNav';
 import ShopCard from '../components/ShopCard';
+import { IPrice } from '../interfaces/priceList';
 
 const Shop = () => {
     const intl = useIntl();
-    const { products, selectedCategory } = useAppSelector(
+    const { products, selectedCategory, selectedPriceRange } = useAppSelector(
         (state) => state.bazaar
     );
     const [itemsPerPage, setItemsPerPage] = useState<number>(12);
@@ -20,11 +21,21 @@ const Shop = () => {
         setItemsPerPage(itemsPerPage);
     };
 
-    const filteredProducts =
+    const filteredProductsByCategory =
         selectedCategory === 'all'
             ? products
             : products.filter(
                   (product) => product.category === selectedCategory
+              );
+
+    const finalFilteredProducts =
+        (selectedPriceRange as string) === 'all'
+            ? filteredProductsByCategory
+            : filteredProductsByCategory.filter(
+                  (product) =>
+                      product.price >=
+                          (selectedPriceRange as IPrice)?.priceOne &&
+                      product.price <= (selectedPriceRange as IPrice)?.priceTwo
               );
 
     return (
@@ -58,7 +69,7 @@ const Shop = () => {
                                 : 'mt-6 flex flex-col gap-x-6 gap-y-10'
                         }
                     >
-                        {filteredProducts
+                        {finalFilteredProducts
                             ?.slice(0, itemsPerPage)
                             .map((product) => (
                                 <ShopCard key={product._id} product={product} />
