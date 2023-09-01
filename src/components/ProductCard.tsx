@@ -37,7 +37,7 @@ const ProductCard = ({ product }: IProps) => {
             <div className="w-full border-[1px] px-2 py-4">
                 <div className="flex justify-between gap-4 items-center">
                     <div>
-                        <h2 className="font-base font-bold">
+                        <h2 className="font-base font-bold truncate">
                             {product.title.substring(0, 15)}
                         </h2>
                     </div>
