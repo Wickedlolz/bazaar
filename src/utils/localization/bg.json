@@ -21,5 +21,15 @@
     "product_add_to_cart_lbl": "Добави във количката",
     "product_category_lbl": "Категория",
     "product_customer_review": "оценка",
-    "product_quantity": "Количество"
+    "product_quantity": "Количество",
+    "footer_locate_us_lbl": "Намерете ни",
+    "footer_mobile": "Мобилен",
+    "footer_phone": "Телефон",
+    "footer_email": "Поща",
+    "footer_profile": "Профил",
+    "footer_my_account": "Моят профил",
+    "footer_checkout": "Поръчка",
+    "footer_order_tracking": "Проследяване на поръчкa",
+    "footer_help_and_support": "Помощ и поддръжка",
+    "footer_subscribe": "Абонирай се"
 }
