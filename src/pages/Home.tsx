@@ -31,10 +31,10 @@ const Home = () => {
                     {products
                         .filter(
                             (x) =>
-                                x.isNew &&
+                                x.oldPrice &&
                                 (x.category === 'women' || x.category === 'men')
                         )
-                        .slice(0, 8)
+                        .slice(0, 12)
                         .map((product) => (
                             <ProductCard key={product._id} product={product} />
                         ))}
