@@ -1,11 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { FETCH_PRODUCTS } from '../actions/products';
 import { IProduct } from '../../interfaces/product';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, limit, query } from 'firebase/firestore';
 import { db } from '../../firebase-config';
+import { PAGE_SIZE } from '../../utils/constants';
 
 export const fetchProducts = createAsyncThunk(FETCH_PRODUCTS, async () => {
-    const data = await getDocs(collection(db, 'allProducts'));
+    const paginationQuery = query(
+        collection(db, 'allProducts'),
+        limit(PAGE_SIZE)
+    );
+    const data = await getDocs(paginationQuery);
 
     const products = data.docs.map((doc) => ({
         _id: doc.id as string,
