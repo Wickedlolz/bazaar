@@ -23,8 +23,32 @@ export const items: ICategory[] = [
     },
     {
         _id: 993,
-        title: 'Others',
-        category: 'other',
-        icons: true,
+        title: 'Computer',
+        category: 'Computer',
+    },
+    {
+        _id: 993,
+        title: 'Home Decoration',
+        category: 'Home Decoration',
+    },
+    {
+        _id: 994,
+        title: 'Smart Phones',
+        category: 'Smart Phones',
+    },
+    {
+        _id: 995,
+        title: 'Smart Watch',
+        category: 'Smart watch',
+    },
+    {
+        _id: 996,
+        title: 'Jewelery',
+        category: 'jewelery',
+    },
+    {
+        _id: 997,
+        title: 'Kids',
+        category: 'kids',
     },
 ];
