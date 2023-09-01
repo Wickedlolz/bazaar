@@ -1,11 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { FETCH_PRODUCTS } from '../actions/products';
 import { IProduct } from '../../interfaces/product';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, limit, query } from 'firebase/firestore';
 import { db } from '../../firebase-config';
+import { PAGE_SIZE } from '../../utils/constants';
+import { IPrice } from '../../interfaces/priceList';
 
 export const fetchProducts = createAsyncThunk(FETCH_PRODUCTS, async () => {
-    const data = await getDocs(collection(db, 'products'));
+    const paginationQuery = query(
+        collection(db, 'allProducts'),
+        limit(PAGE_SIZE)
+    );
+    const data = await getDocs(paginationQuery);
 
     const products = data.docs.map((doc) => ({
         _id: doc.id as string,
@@ -26,23 +32,25 @@ export const fetchProducts = createAsyncThunk(FETCH_PRODUCTS, async () => {
 
 export interface ProductsState {
     products: IProduct[];
-    selectedProduct: IProduct | null;
+    selectedCategory: string;
+    selectedPriceRange: IPrice | string;
 }
 
 const initialState: ProductsState = {
     products: [],
-    selectedProduct: null,
+    selectedCategory: 'all',
+    selectedPriceRange: 'all',
 };
 
 export const productsSlice = createSlice({
     name: 'bazaar',
     initialState,
     reducers: {
-        loadProducts: (state, action) => {
-            state.products = action.payload;
+        changeCategory: (state, action) => {
+            state.selectedCategory = action.payload;
         },
-        setSelectedProduct: (state, action) => {
-            state.selectedProduct = action.payload;
+        changePriceRange: (state, action) => {
+            state.selectedPriceRange = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -52,6 +60,6 @@ export const productsSlice = createSlice({
     },
 });
 
-export const { loadProducts, setSelectedProduct } = productsSlice.actions;
+export const { changeCategory, changePriceRange } = productsSlice.actions;
 
 export default productsSlice.reducer;

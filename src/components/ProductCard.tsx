@@ -37,12 +37,12 @@ const ProductCard = ({ product }: IProps) => {
             <div className="w-full border-[1px] px-2 py-4">
                 <div className="flex justify-between gap-4 items-center">
                     <div>
-                        <h2 className="font-base font-bold">
+                        <h2 className="font-base font-bold truncate">
                             {product.title.substring(0, 15)}
                         </h2>
                     </div>
                     <div className="flex justify-end gap-2 relative overflow-hidden w-28 text-sm">
-                        <div className="flex gap-2 transform group-hover:translate-x-24 transition-transform duration-500">
+                        <div className="flex gap-2 transform group-hover:translate-x-36 transition-transform duration-500">
                             {product.oldPrice && (
                                 <p className="line-through text-gray-500">
                                     ${product.oldPrice}
