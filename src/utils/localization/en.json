@@ -21,5 +21,15 @@
     "product_add_to_cart_lbl": "add to cart",
     "product_category_lbl": "Category",
     "product_customer_review": "Customer review",
-    "product_quantity": "Quantity"
+    "product_quantity": "Quantity",
+    "footer_locate_us_lbl": "locate us",
+    "footer_mobile": "Mobile",
+    "footer_phone": "Phone",
+    "footer_email": "E-mail",
+    "footer_profile": "profile",
+    "footer_my_account": "my account",
+    "footer_checkout": "checkout",
+    "footer_order_tracking": "order tracking",
+    "footer_help_and_support": "help & support",
+    "footer_subscribe": "Subscribe"
 }
