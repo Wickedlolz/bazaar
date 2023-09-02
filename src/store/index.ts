@@ -15,6 +15,7 @@ import storage from 'redux-persist/lib/storage';
 
 import productReducer from './reducers/productsSlice';
 import cartReducer, { CartState } from './reducers/cartSlice';
+import themeReducer, { IThemeState } from './reducers/themeSlice';
 
 const persistConfig: PersistConfig<CartState> = {
     key: 'root',
@@ -22,12 +23,20 @@ const persistConfig: PersistConfig<CartState> = {
     storage,
 };
 
+const themePersistConfig: PersistConfig<IThemeState> = {
+    key: 'theme',
+    version: 2,
+    storage,
+};
+
 const persistedReducer = persistReducer(persistConfig, cartReducer);
+const themePersistedReducer = persistReducer(themePersistConfig, themeReducer);
 
 export const store = configureStore({
     reducer: {
         bazaar: productReducer,
         cart: persistedReducer,
+        theme: themePersistedReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

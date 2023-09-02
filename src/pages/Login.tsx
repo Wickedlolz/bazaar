@@ -47,7 +47,7 @@ const Login = () => {
     };
 
     return (
-        <div className="w-full flex flex-col items-center justify-center gap-10 py-20">
+        <div className="w-full flex flex-col dark:bg-black dark:text-white items-center justify-center gap-10 py-20">
             <Helmet>
                 <title>
                     Login {intl.formatMessage({ id: 'page_title' }) || ''}
@@ -60,14 +60,14 @@ const Login = () => {
                         className="text-base w-60 h-12 tracking-wide border-[1px] border-gray-400 rounded-md flex items-center justify-center gap-2 hover:border-blue-600 cursor-pointer duration-300"
                     >
                         <FcGoogle className="w-8" />
-                        <span className="text-sm text-gray-900">
+                        <span className="text-sm text-gray-900 dark:text-white">
                             <FormattedMessage id="auth_sign_in_with_google" />
                         </span>
                     </div>
                 ) : (
                     <button
                         onClick={handleSignOut}
-                        className="bg-black text-white text-base py-3 px-8 tracking-wide rounded-md hover:bg-gray-800 duration-300"
+                        className="bg-black text-white dark:bg-white dark:text-black text-base py-3 px-8 tracking-wide rounded-md hover:bg-gray-800 duration-300"
                     >
                         <FormattedMessage id="auth_sign_out" />
                     </button>
