@@ -10,16 +10,16 @@ const Home = () => {
     const { products } = useAppSelector((state) => state.bazaar);
 
     return (
-        <div>
+        <>
             <Helmet>
                 <title>
                     Home {intl.formatMessage({ id: 'page_title' }) || ''}
                 </title>
             </Helmet>
             <Banner />
-            <div className="py-10">
+            <div className="py-10 dark:bg-black dark:text-white">
                 <div className="flex flex-col items-center gap-4">
-                    <h1 className="text-2xl bg-black text-white py-2 w-80 text-center">
+                    <h1 className="text-2xl bg-black text-white dark:bg-white dark:text-black py-2 w-80 text-center">
                         <FormattedMessage id="shop_everyday_title" />
                     </h1>
                     <span className="w-20 h-[3px] bg-black"></span>
@@ -40,7 +40,7 @@ const Home = () => {
                         ))}
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

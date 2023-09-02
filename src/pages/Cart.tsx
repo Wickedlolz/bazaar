@@ -59,29 +59,32 @@ const Cart = () => {
 
     if (productData.length === 0) {
         return (
-            <div className="max-w-screen-xl mx-auto py-32 flex flex-col items-center justify-center">
-                <Helmet>
-                    <title>
-                        Cart {intl.formatMessage({ id: 'page_title' }) || ''}
-                    </title>
-                </Helmet>
-                <h2 className="text-base font-semibold text-orange-900">
-                    <FormattedMessage id="cart_is_empty_lbl" />
-                </h2>
-                <Link to="/">
-                    <button className="mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-300">
-                        <span>
-                            <HiOutlineArrowLeft />
-                        </span>
-                        <FormattedMessage id="cart_go_shopping_btn" />
-                    </button>
-                </Link>
+            <div className="dark:bg-black dark:text-white">
+                <div className="max-w-screen-xl mx-auto py-32 flex flex-col items-center justify-center">
+                    <Helmet>
+                        <title>
+                            Cart{' '}
+                            {intl.formatMessage({ id: 'page_title' }) || ''}
+                        </title>
+                    </Helmet>
+                    <h2 className="text-base font-semibold text-orange-900">
+                        <FormattedMessage id="cart_is_empty_lbl" />
+                    </h2>
+                    <Link to="/">
+                        <button className="mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black dark:hover:text-white duration-300">
+                            <span>
+                                <HiOutlineArrowLeft />
+                            </span>
+                            <FormattedMessage id="cart_go_shopping_btn" />
+                        </button>
+                    </Link>
+                </div>
             </div>
         );
     }
 
     return (
-        <div>
+        <div className="dark:bg-black dark:text-white">
             <Helmet>
                 <title>
                     Cart {intl.formatMessage({ id: 'page_title' }) || ''}
@@ -122,7 +125,7 @@ const Cart = () => {
                         </button>
                     </Link>
                 </div>
-                <div className="w-1/3 bg-[#fafafa] py-6 px-4">
+                <div className="w-1/3 bg-[#fafafa] dark:bg-black dark:text-white py-6 px-4">
                     <div className="flex flex-col gap-6 border-b-[1px] border-b-gray-400 pb-6">
                         <h2 className="text-2xl font-medium">
                             <FormattedMessage id="cart_totals" />
@@ -149,7 +152,7 @@ const Cart = () => {
                     </p>
                     <button
                         onClick={handleCheckout}
-                        className="text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300"
+                        className="text-base bg-black text-white dark:border-white dark:border w-full py-3 mt-6 hover:bg-gray-800 duration-300"
                     >
                         <FormattedMessage id="cart_proceed_to_checkout" />
                     </button>

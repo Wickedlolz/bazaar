@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useAppDispatch } from './store';
+import { useAppDispatch, useAppSelector } from './store';
 import { fetchProducts } from './store/reducers/productsSlice';
 import { HelmetProvider } from 'react-helmet-async';
 
@@ -9,11 +9,18 @@ import { FirebaseProvider } from './contexts/FirebaseContext';
 import Locales from './components/Locales';
 
 const App = () => {
+    const isDarkTheme = useAppSelector((state) => state.theme.isDarkTheme);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(fetchProducts());
-    }, [dispatch]);
+
+        if (isDarkTheme) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [dispatch, isDarkTheme]);
 
     return (
         <FirebaseProvider>
