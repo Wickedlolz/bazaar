@@ -59,7 +59,7 @@ const Cart = () => {
 
     if (productData.length === 0) {
         return (
-            <div className="dark:bg-black dark:text-white">
+            <div className="dark-theme">
                 <div className="max-w-screen-xl mx-auto py-32 flex flex-col items-center justify-center">
                     <Helmet>
                         <title>
@@ -84,7 +84,7 @@ const Cart = () => {
     }
 
     return (
-        <div className="dark:bg-black dark:text-white">
+        <div className="dark-theme">
             <Helmet>
                 <title>
                     Cart {intl.formatMessage({ id: 'page_title' }) || ''}
@@ -125,7 +125,7 @@ const Cart = () => {
                         </button>
                     </Link>
                 </div>
-                <div className="w-1/3 bg-[#fafafa] dark:bg-black dark:text-white py-6 px-4">
+                <div className="w-1/3 bg-[#fafafa] dark-theme py-6 px-4">
                     <div className="flex flex-col gap-6 border-b-[1px] border-b-gray-400 pb-6">
                         <h2 className="text-2xl font-medium">
                             <FormattedMessage id="cart_totals" />

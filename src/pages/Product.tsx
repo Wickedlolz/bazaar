@@ -48,7 +48,7 @@ const Product = () => {
     };
 
     return (
-        <div className="dark:bg-black dark:text-white">
+        <div className="dark-theme">
             <div className="max-w-screen-xl mx-auto py-10 flex gap-10">
                 <Helmet>
                     <title>

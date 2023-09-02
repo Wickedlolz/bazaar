@@ -29,7 +29,7 @@ const Header = () => {
     };
 
     return (
-        <header className="flex w-full h-20 items-center bg-white dark:bg-black dark:text-white justify-between px-16 border-b-2 sticky top-0 z-50">
+        <header className="flex w-full h-20 items-center bg-white dark-theme justify-between px-16 border-b-2 sticky top-0 z-50">
             <div>
                 <NavLink
                     to="/"
