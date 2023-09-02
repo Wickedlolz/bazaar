@@ -17,19 +17,12 @@ const Header = () => {
 
     /**
      * Toggles the application's theme between light and dark mode.
-     * This function updates the theme state in the Redux store and manages the DOM's
-     * theme class to reflect the selected theme.
+     * This function updates the theme state in the Redux store
      *
      * @returns {void}
      */
     const switchTheme = (): void => {
         dispatch(toggleTheme(null));
-
-        if (isDarkTheme) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
     };
 
     const switchLanguage = () => {
