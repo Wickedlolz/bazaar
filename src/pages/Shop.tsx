@@ -39,7 +39,7 @@ const Shop = () => {
               );
 
     return (
-        <div className="max-w-container mx-auto px-4 dark:bg-black dark:text-white">
+        <div className="max-w-container mx-auto px-4 dark-theme">
             <Helmet>
                 <title>
                     Shop {intl.formatMessage({ id: 'page_title' }) || ''}

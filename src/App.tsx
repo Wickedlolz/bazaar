@@ -14,13 +14,15 @@ const App = () => {
 
     useEffect(() => {
         dispatch(fetchProducts());
+    }, [dispatch]);
 
+    useEffect(() => {
         if (isDarkTheme) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
         }
-    }, [dispatch, isDarkTheme]);
+    }, [isDarkTheme]);
 
     return (
         <FirebaseProvider>

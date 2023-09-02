@@ -14,3 +14,9 @@
         font-family: 'Poppins', sans-serif;
     }
 }
+
+@layer components {
+    .dark-theme {
+        @apply dark:bg-black dark:text-white;
+    }
+}

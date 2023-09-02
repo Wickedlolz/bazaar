@@ -17,7 +17,7 @@ const Home = () => {
                 </title>
             </Helmet>
             <Banner />
-            <div className="py-10 dark:bg-black dark:text-white">
+            <div className="py-10 dark-theme">
                 <div className="flex flex-col items-center gap-4">
                     <h1 className="text-2xl bg-black text-white dark:bg-white dark:text-black py-2 w-80 text-center">
                         <FormattedMessage id="shop_everyday_title" />
