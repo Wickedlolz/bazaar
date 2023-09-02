@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useFirebaseContext } from '../contexts/FirebaseContext';
 import { useAppDispatch, useAppSelector } from '../store';
@@ -10,6 +11,9 @@ const Header = () => {
     const { productData } = useAppSelector((state) => state.cart);
     const isDarkTheme = useAppSelector((state) => state.theme.isDarkTheme);
     const dispatch = useAppDispatch();
+    const [language, setLanguage] = useState<string>(
+        navigator.language === 'bg-BG' ? 'BG' : 'EN'
+    );
 
     /**
      * Toggles the application's theme between light and dark mode.
@@ -18,13 +22,21 @@ const Header = () => {
      *
      * @returns {void}
      */
-    const switchTheme = () => {
+    const switchTheme = (): void => {
         dispatch(toggleTheme(null));
 
         if (isDarkTheme) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
+        }
+    };
+
+    const switchLanguage = () => {
+        if (language === 'EN') {
+            setLanguage('BG');
+        } else {
+            setLanguage('EN');
         }
     };
 
@@ -39,7 +51,7 @@ const Header = () => {
                 </NavLink>
             </div>
             <nav className="flex items-center gap-8">
-                <ul className="flex items-center gap-8">
+                <ul className="flex items-center gap-5">
                     <li>
                         <NavLink
                             className={({ isActive }) =>
@@ -50,18 +62,6 @@ const Header = () => {
                             to="/"
                         >
                             Home
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            className={({ isActive }) =>
-                                isActive
-                                    ? 'text-base font-bold text-orange-900 underline underline-offset-2 decoration-[1px] duration-300'
-                                    : 'text-base font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] duration-300'
-                            }
-                            to="/pages"
-                        >
-                            Pages
                         </NavLink>
                     </li>
                     <li>
@@ -83,10 +83,23 @@ const Header = () => {
                                     ? 'text-base font-bold text-orange-900 underline underline-offset-2 decoration-[1px] duration-300'
                                     : 'text-base font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] duration-300'
                             }
-                            to="/element"
+                            to="/about-us"
                         >
-                            Element
+                            About Us
                         </NavLink>
+                    </li>
+                    <li>
+                        <button
+                            onClick={switchLanguage}
+                            type="button"
+                            className={`${
+                                isDarkTheme
+                                    ? 'text-gray-300 border-gray-300'
+                                    : 'text-gray-800 border-gray-500'
+                            } border-2 rounded-lg text-sm p-1`}
+                        >
+                            {language}
+                        </button>
                     </li>
                     <li>
                         <button
