@@ -40,5 +40,7 @@
     "shop_product_banner_new_arrival": "Новопристигнали",
     "shop_product_banner_featured": "Представени",
     "shop_product_banner_final_offer": "Окончателна оферта",
-    "shop_product_banner_show": "Покажи:"
+    "shop_product_banner_show": "Покажи:",
+    "not_found_page": "Страницата не е намерена",
+    "go_home": "Върни се към началната страница"
 }
