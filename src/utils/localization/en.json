@@ -31,5 +31,14 @@
     "footer_checkout": "checkout",
     "footer_order_tracking": "order tracking",
     "footer_help_and_support": "help & support",
-    "footer_subscribe": "Subscribe"
+    "footer_subscribe": "Subscribe",
+    "shop_title": "Products",
+    "shop_aside_shop_by_category": "Shop by Category",
+    "shop_aside_shop_by_price": "Shop by Price",
+    "shop_product_banner_sort_by": "Sort by:",
+    "shop_product_banner_best_sellers": "Best Sellers",
+    "shop_product_banner_new_arrival": "New Arrival",
+    "shop_product_banner_featured": "Featured",
+    "shop_product_banner_final_offer": "Final Offer",
+    "shop_product_banner_show": "Show:"
 }

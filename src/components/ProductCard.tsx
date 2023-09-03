@@ -15,7 +15,12 @@ interface IProps {
 const ProductCard = ({ product }: IProps) => {
     const dispatch = useAppDispatch();
 
-    const handleAddToCart = () => {
+    /**
+     * Adds the specified product to the cart.
+     *
+     * @returns {void}
+     */
+    const handleAddToCart = (): void => {
         dispatch(addToCart({ ...product, quantity: 1 }));
         toast.success(`${product?.title} is added to your cart.`);
     };

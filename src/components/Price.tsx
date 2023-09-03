@@ -1,3 +1,4 @@
+import { useIntl } from 'react-intl';
 import { useAppDispatch, useAppSelector } from '../store';
 import { changePriceRange } from '../store/reducers/productsSlice';
 import { priceList } from '../utils/priceData';
@@ -7,10 +8,14 @@ import NavTitle from './NavTitle';
 const Price = () => {
     const dispatch = useAppDispatch();
     const { selectedPriceRange } = useAppSelector((state) => state.bazaar);
+    const intl = useIntl();
 
     return (
         <div className="cursor-pointer">
-            <NavTitle title="Shop by Price" icons={false} />
+            <NavTitle
+                title={intl.formatMessage({ id: 'shop_aside_shop_by_price' })}
+                icons={false}
+            />
             <div className="font-titleFont">
                 <ul className="flex flex-col gap-4 text-sm lg:text-base text-[#767676]">
                     <li

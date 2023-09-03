@@ -1,4 +1,5 @@
 import { useEffect, useRef, Dispatch, SetStateAction } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import { BsGridFill } from 'react-icons/bs';
 import { ImList } from 'react-icons/im';
@@ -80,23 +81,35 @@ const ProductBanner = ({
 
             <div className="flex items-center gap-2 md:gap-6 mt-4 md:mt-0">
                 <div className="flex items-center gap-2 text-base text-[#767676] relative">
-                    <label className="block">Sort by:</label>
+                    <label className="block">
+                        <FormattedMessage id="shop_product_banner_sort_by" />
+                    </label>
                     <select
                         // onChange={(e) => setSelected(e.target.value)}
                         id="countries"
                         className="w-32 md:w-52 border-[1px] border-gray-200 py-1 px-4 cursor-pointer text-primeColor text-base block dark:placeholder-gray-400 appearance-none focus-within:outline-none focus-visible:border-primeColor"
                     >
-                        <option value="Best Sellers">Best Sellers</option>
-                        <option value="New Arrival">New Arrival</option>
-                        <option value="Featured">Featured</option>
-                        <option value="Final Offer">Final Offer</option>
+                        <option value="Best Sellers">
+                            <FormattedMessage id="shop_product_banner_best_sellers" />
+                        </option>
+                        <option value="New Arrival">
+                            <FormattedMessage id="shop_product_banner_new_arrival" />
+                        </option>
+                        <option value="Featured">
+                            <FormattedMessage id="shop_product_banner_featured" />
+                        </option>
+                        <option value="Final Offer">
+                            <FormattedMessage id="shop_product_banner_final_offer" />
+                        </option>
                     </select>
                     <span className="absolute text-sm right-2 md:right-4 top-2.5">
                         <GoTriangleDown />
                     </span>
                 </div>
                 <div className="flex items-center gap-2 text-[#767676] relative">
-                    <label className="block">Show:</label>
+                    <label className="block">
+                        <FormattedMessage id="shop_product_banner_show" />
+                    </label>
                     <select
                         onChange={(e) =>
                             itemsPerPageFromBanner(+e.target.value)

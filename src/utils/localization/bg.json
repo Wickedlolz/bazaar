@@ -31,5 +31,14 @@
     "footer_checkout": "Поръчка",
     "footer_order_tracking": "Проследяване на поръчкa",
     "footer_help_and_support": "Помощ и поддръжка",
-    "footer_subscribe": "Абонирай се"
+    "footer_subscribe": "Абонирай се",
+    "shop_title": "Продукти",
+    "shop_aside_shop_by_category": "Пазарувайте по категория",
+    "shop_aside_shop_by_price": "Пазарувайте по цена",
+    "shop_product_banner_sort_by": "Сортирай по:",
+    "shop_product_banner_best_sellers": "Най-продавани",
+    "shop_product_banner_new_arrival": "Новопристигнали",
+    "shop_product_banner_featured": "Представени",
+    "shop_product_banner_final_offer": "Окончателна оферта",
+    "shop_product_banner_show": "Покажи:"
 }
