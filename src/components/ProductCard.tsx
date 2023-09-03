@@ -15,7 +15,12 @@ interface IProps {
 const ProductCard = ({ product }: IProps) => {
     const dispatch = useAppDispatch();
 
-    const handleAddToCart = () => {
+    /**
+     * Adds the specified product to the cart.
+     *
+     * @returns {void}
+     */
+    const handleAddToCart = (): void => {
         dispatch(addToCart({ ...product, quantity: 1 }));
         toast.success(`${product?.title} is added to your cart.`);
     };
@@ -42,7 +47,7 @@ const ProductCard = ({ product }: IProps) => {
                         </h2>
                     </div>
                     <div className="flex justify-end gap-2 relative overflow-hidden w-28 text-sm">
-                        <div className="flex gap-2 transform group-hover:translate-x-36 transition-transform duration-500">
+                        <div className="flex gap-2 transform group-hover:translate-x-24 transition-transform duration-500">
                             {product.oldPrice && (
                                 <p className="line-through text-gray-500">
                                     ${product.oldPrice}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useFirebaseContext } from '../contexts/FirebaseContext';
 import { useAppDispatch, useAppSelector } from '../store';
 import { resetCart } from '../store/reducers/cartSlice';
 import StripeCheckout, { Token } from 'react-stripe-checkout';
@@ -7,10 +8,12 @@ import { Helmet } from 'react-helmet-async';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
+import { PAYMENT_URL } from '../utils/constants';
+
 import { HiOutlineArrowLeft } from 'react-icons/hi';
+
 import CartItem from '../components/CartItem';
 import CartHeader from '../assets/cart-header.jpeg';
-import { useFirebaseContext } from '../contexts/FirebaseContext';
 
 const Cart = () => {
     const { productData } = useAppSelector((state) => state.cart);
@@ -30,12 +33,24 @@ const Cart = () => {
         setTotalAmount(Number(price.toFixed(2)));
     }, [productData]);
 
-    const handleResetCart = () => {
+    /**
+     * Resets the shopping cart and displays an error toast message to notify the user
+     * that the cart has been emptied.
+     *
+     * @returns {void}
+     */
+    const handleResetCart = (): void => {
         dispatch(resetCart(null));
         toast.error(intl.formatMessage({ id: 'cart_empty_lbl' }));
     };
 
-    const handleCheckout = () => {
+    /**
+     * Handles the checkout process, determining whether to proceed with payment or prompt
+     * the user to sign in if they are not already authenticated.
+     *
+     * @returns {void}
+     */
+    const handleCheckout = (): void => {
         if (user) {
             setPayNow(true);
         } else {
@@ -44,8 +59,15 @@ const Cart = () => {
         }
     };
 
-    const payment = async (token: Token) => {
-        await fetch('https://iwindy-server.vercel.app/api/payment/pay', {
+    /**
+     * Initiates a payment request with the provided payment token.
+     *
+     * @param {Token} token - The payment token to be used for the transaction.
+     *
+     * @returns {Promise<void>}
+     */
+    const payment = async (token: Token): Promise<void> => {
+        await fetch(PAYMENT_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

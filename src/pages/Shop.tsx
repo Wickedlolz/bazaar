@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAppSelector } from '../store';
 import { Helmet } from 'react-helmet-async';
-import { useIntl } from 'react-intl';
+import { useIntl, FormattedMessage } from 'react-intl';
 
 import ProductBanner from '../components/ProductBanner';
 import ShopSideNav from '../components/ShopSideNav';
@@ -17,7 +17,14 @@ const Shop = () => {
     const [girdViewActive, setGridViewActive] = useState<boolean>(true);
     const [listViewActive, setListViewActive] = useState<boolean>(false);
 
-    const itemsPerPageFromBanner = (itemsPerPage: number) => {
+    /**
+     * Sets the number of items per page based on the value selected in the banner.
+     *
+     * @param {number} itemsPerPage The number of items per page.
+     *
+     * @returns {void}
+     */
+    const itemsPerPageFromBanner = (itemsPerPage: number): void => {
         setItemsPerPage(itemsPerPage);
     };
 
@@ -47,7 +54,7 @@ const Shop = () => {
             </Helmet>
             <div className="w-full py-10 xl:py-10 flex flex-col gap-3">
                 <h1 className="text-5xl text-primeColor font-titleFont font-bold">
-                    Products
+                    <FormattedMessage id="shop_title" />
                 </h1>
             </div>
             <div className="w-full h-full flex pb-20 gap-10">

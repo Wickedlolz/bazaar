@@ -23,7 +23,7 @@ const Home = () => {
                         <FormattedMessage id="shop_everyday_title" />
                     </h1>
                     <span className="w-20 h-[3px] bg-black"></span>
-                    <p className="max-w-[700px] text-gray-600 text-center">
+                    <p className="max-w-[700px] text-gray-600 dark:text-white text-center">
                         <FormattedMessage id="shop_everyday_desc" />
                     </p>
                 </div>

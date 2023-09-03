@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../store';
 import { changeCategory } from '../store/reducers/productsSlice';
+import { useIntl } from 'react-intl';
 
 import { items } from '../utils/categoryData';
 
@@ -10,11 +11,17 @@ import { ImPlus } from 'react-icons/im';
 const Category = () => {
     const dispatch = useAppDispatch();
     const { selectedCategory } = useAppSelector((state) => state.bazaar);
+    const intl = useIntl();
     const [showSubCatOne, setShowSubCatOne] = useState(false);
 
     return (
         <div className="w-full">
-            <NavTitle title="Shop by Category" icons={false} />
+            <NavTitle
+                title={intl.formatMessage({
+                    id: 'shop_aside_shop_by_category',
+                })}
+                icons={false}
+            />
             <div>
                 <ul className="flex flex-col gap-4 text-sm lg:text-base text-[#767676]">
                     {items.map(({ _id, title, category, icons }) => (
