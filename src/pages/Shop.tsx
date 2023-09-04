@@ -5,8 +5,8 @@ import { useIntl, FormattedMessage } from 'react-intl';
 
 import ProductBanner from '../components/ProductBanner';
 import ShopSideNav from '../components/ShopSideNav';
-import ShopCard from '../components/ShopCard';
 import { IPrice } from '../interfaces/priceList';
+import Pagination from '../components/Pagination';
 
 const Shop = () => {
     const intl = useIntl();
@@ -69,19 +69,11 @@ const Shop = () => {
                         setGridViewActive={setGridViewActive}
                         setListViewActive={setListViewActive}
                     />
-                    <div
-                        className={
-                            girdViewActive
-                                ? 'mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'
-                                : 'mt-6 flex flex-col gap-x-6 gap-y-10'
-                        }
-                    >
-                        {finalFilteredProducts
-                            ?.slice(0, itemsPerPage)
-                            .map((product) => (
-                                <ShopCard key={product._id} product={product} />
-                            ))}
-                    </div>
+                    <Pagination
+                        itemsPerPage={itemsPerPage}
+                        girdViewActive={girdViewActive}
+                        products={finalFilteredProducts}
+                    />
                 </div>
             </div>
         </div>
