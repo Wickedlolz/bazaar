@@ -40,5 +40,7 @@
     "shop_product_banner_new_arrival": "New Arrival",
     "shop_product_banner_featured": "Featured",
     "shop_product_banner_final_offer": "Final Offer",
-    "shop_product_banner_show": "Show:"
+    "shop_product_banner_show": "Show:",
+    "not_found_page": "Page Not Found",
+    "go_home": "Go Home"
 }

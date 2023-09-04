@@ -46,6 +46,9 @@ export const productsSlice = createSlice({
     name: 'bazaar',
     initialState,
     reducers: {
+        setProducts: (state, action) => {
+            state.products = state.products.concat(action.payload);
+        },
         changeCategory: (state, action) => {
             state.selectedCategory = action.payload;
         },
@@ -60,6 +63,7 @@ export const productsSlice = createSlice({
     },
 });
 
-export const { changeCategory, changePriceRange } = productsSlice.actions;
+export const { changeCategory, changePriceRange, setProducts } =
+    productsSlice.actions;
 
 export default productsSlice.reducer;
