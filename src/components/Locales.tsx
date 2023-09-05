@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { IntlProvider, MessageFormatElement } from 'react-intl';
+import { useAppSelector } from '../store';
 
 const loadLocaleData = (locale: string) => {
     switch (locale) {
@@ -17,6 +18,7 @@ interface IProps {
 }
 
 const Locales = ({ children }: IProps) => {
+    const { lang } = useAppSelector((state) => state.bazaar);
     const [messages, setMessages] = useState<
         | Record<string, string>
         | Record<string, MessageFormatElement[]>
@@ -24,10 +26,10 @@ const Locales = ({ children }: IProps) => {
     >(undefined);
 
     useEffect(() => {
-        loadLocaleData(navigator.language).then((d) => {
+        loadLocaleData(lang).then((d) => {
             setMessages(d.default as any);
         });
-    }, []);
+    }, [lang]);
 
     return (
         <>
