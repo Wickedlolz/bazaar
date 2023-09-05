@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useFirebaseContext } from '../contexts/FirebaseContext';
 import { useAppDispatch, useAppSelector } from '../store';
 import { toggleTheme } from '../store/reducers/themeSlice';
+import { changeLanguage } from '../store/reducers/productsSlice';
 
 import { BiShoppingBag } from 'react-icons/bi';
 
@@ -10,9 +11,10 @@ const Header = () => {
     const { user } = useFirebaseContext();
     const { productData } = useAppSelector((state) => state.cart);
     const isDarkTheme = useAppSelector((state) => state.theme.isDarkTheme);
+    const { lang } = useAppSelector((state) => state.bazaar);
     const dispatch = useAppDispatch();
     const [language, setLanguage] = useState<string>(
-        navigator.language === 'bg-BG' ? 'BG' : 'EN'
+        lang === 'bg-BG' ? 'EN' : 'BG'
     );
 
     /**
@@ -27,8 +29,10 @@ const Header = () => {
 
     const switchLanguage = () => {
         if (language === 'EN') {
+            dispatch(changeLanguage('en-US'));
             setLanguage('BG');
         } else {
+            dispatch(changeLanguage('bg-BG'));
             setLanguage('EN');
         }
     };

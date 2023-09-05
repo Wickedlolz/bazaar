@@ -34,12 +34,14 @@ export interface ProductsState {
     products: IProduct[];
     selectedCategory: string;
     selectedPriceRange: IPrice | string;
+    lang: string;
 }
 
 const initialState: ProductsState = {
     products: [],
     selectedCategory: 'all',
     selectedPriceRange: 'all',
+    lang: navigator.language,
 };
 
 export const productsSlice = createSlice({
@@ -55,6 +57,9 @@ export const productsSlice = createSlice({
         changePriceRange: (state, action) => {
             state.selectedPriceRange = action.payload;
         },
+        changeLanguage: (state, action) => {
+            state.lang = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchProducts.fulfilled, (state, action) => {
@@ -63,7 +68,7 @@ export const productsSlice = createSlice({
     },
 });
 
-export const { changeCategory, changePriceRange, setProducts } =
+export const { changeCategory, changePriceRange, setProducts, changeLanguage } =
     productsSlice.actions;
 
 export default productsSlice.reducer;
