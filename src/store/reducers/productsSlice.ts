@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { FETCH_PRODUCTS } from '../actions/products';
-import { IProduct } from '../../interfaces/product';
+import { IProduct, IRating } from '../../interfaces/product';
 import { collection, getDocs, limit, query } from 'firebase/firestore';
 import { db } from '../../firebase-config';
 import { PAGE_SIZE } from '../../utils/constants';
@@ -22,9 +22,9 @@ export const fetchProducts = createAsyncThunk(FETCH_PRODUCTS, async () => {
         description: doc.data().description as string,
         category: doc.data().category as string,
         image: doc.data().image as string,
-        rating: doc.data().rating as number,
-        quantity: doc.data().quantity as number,
-        brand: doc.data().brand as string,
+        rating: doc.data().rating as IRating,
+        quantity: (doc.data().quantity as number) || 1,
+        brand: (doc.data().brand as string) || '',
     }));
 
     return products;
@@ -51,6 +51,12 @@ export const productsSlice = createSlice({
         setProducts: (state, action) => {
             state.products = state.products.concat(action.payload);
         },
+        updateProduct: (state, action) => {
+            const productIndex = state.products.findIndex(
+                (product) => product._id === action.payload._id
+            );
+            state.products[productIndex] = action.payload;
+        },
         changeCategory: (state, action) => {
             state.selectedCategory = action.payload;
         },
@@ -68,7 +74,12 @@ export const productsSlice = createSlice({
     },
 });
 
-export const { changeCategory, changePriceRange, setProducts, changeLanguage } =
-    productsSlice.actions;
+export const {
+    changeCategory,
+    changePriceRange,
+    setProducts,
+    changeLanguage,
+    updateProduct,
+} = productsSlice.actions;
 
 export default productsSlice.reducer;

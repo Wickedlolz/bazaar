@@ -1,13 +1,17 @@
 import {
     collection,
+    doc,
     getCountFromServer,
+    getDoc,
     getDocs,
     limit,
     query,
+    setDoc,
     startAfter,
 } from 'firebase/firestore';
 import { db } from '../firebase-config';
 import { PAGE_SIZE } from '../utils/constants';
+import { IProduct } from '../interfaces/product';
 
 /**
  * Retrieves the total count of items from the 'allProducts' collection in the database.
@@ -47,4 +51,19 @@ export const fetchNextProducts = async () => {
     );
 
     return nextProducts;
+};
+
+export const getProductById = async (productId: string) => {
+    const docRef = doc(db, 'allProducts', productId);
+    const docSnap = await getDoc(docRef);
+
+    return docSnap.data();
+};
+
+export const updateProductById = async (
+    productId: string,
+    updateProduct: IProduct
+) => {
+    const docRef = doc(db, 'allProducts', productId);
+    await setDoc(docRef, updateProduct);
 };

@@ -3,14 +3,17 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store';
 import { addToCart } from '../store/reducers/cartSlice';
 import { Helmet } from 'react-helmet-async';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
+import { updateProductById } from '../services/productService';
 
-import { IProduct } from '../interfaces/product';
+import { IProduct, IRating } from '../interfaces/product';
 
 import { MdOutlineStar } from 'react-icons/md';
+import { updateProduct } from '../store/reducers/productsSlice';
 
 const Product = () => {
+    const intl = useIntl();
     const { id } = useParams();
     const dispatch = useAppDispatch();
     const { products } = useAppSelector((state) => state.bazaar);
@@ -47,13 +50,36 @@ const Product = () => {
         toast.success(`${product?.title} is added to your cart.`);
     };
 
+    const rateProduct = async (rating: number) => {
+        const updatedProduct: IProduct = {
+            ...product!,
+            rating: {
+                rate: (product?.rating.count! + 1) / rating,
+                count: product?.rating.count! + 1,
+            },
+        };
+
+        updateProductById(id!, updatedProduct)
+            .then(() => {
+                dispatch(updateProduct(updatedProduct));
+                toast.success(
+                    `${intl.formatMessage({ id: 'rate_product_success' })} ${
+                        product?.title
+                    }`
+                );
+            })
+            .catch((err) => {
+                toast.error(intl.formatMessage({ id: 'rate_product_error' }));
+            });
+    };
+
     return (
         <div className="dark-theme">
             <div className="max-w-screen-xl mx-auto py-10 flex gap-10">
                 <Helmet>
                     <title>
-                        {product?.title || 'Product'} | Bazaar - A Modern
-                        Shopping App
+                        {product?.title || 'Product'}{' '}
+                        {intl.formatMessage({ id: 'page_title' }) || ''}
                     </title>
                 </Helmet>
                 <div className="w-2/5 relative">
@@ -93,16 +119,25 @@ const Product = () => {
                         </div>
                     </div>
                     <div className="flex items-center gap-2 text-base">
-                        <div className="flex flex-row-reverse">
-                            <MdOutlineStar className="peer peer-hover:text-yellow-500 hover:text-yellow-500 cursor-pointer" />
-                            <MdOutlineStar className="peer peer-hover:text-yellow-500 hover:text-yellow-500 cursor-pointer" />
-                            <MdOutlineStar className="peer peer-hover:text-yellow-500 hover:text-yellow-500 cursor-pointer" />
-                            <MdOutlineStar className="peer peer-hover:text-yellow-500 hover:text-yellow-500 cursor-pointer" />
-                            <MdOutlineStar className="peer peer-hover:text-yellow-500 hover:text-yellow-500 cursor-pointer" />
+                        <div className="flex items-center space-x-1">
+                            {[...Array(5)].map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => rateProduct(index + 1)}
+                                    className={`text-2xl ${
+                                        index <
+                                        (product?.rating as IRating)?.rate
+                                            ? 'text-yellow-500'
+                                            : 'text-gray-300'
+                                    } hover:text-yellow-500`}
+                                >
+                                    <MdOutlineStar />
+                                </button>
+                            ))}
                         </div>
                         <p className="text-xs text-gray-500">
-                            (1 <FormattedMessage id="product_customer_review" />
-                            )
+                            ({product?.rating?.count}{' '}
+                            <FormattedMessage id="product_customer_review" />)
                         </p>
                     </div>
                     <p className="text-base text-gray-500 mt-3">

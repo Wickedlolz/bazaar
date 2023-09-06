@@ -13,11 +13,11 @@ const loadLocaleData = (locale: string) => {
     }
 };
 
-interface IProps {
+type LocalesProps = {
     children: ReactNode;
-}
+};
 
-const Locales = ({ children }: IProps) => {
+const Locales = ({ children }: LocalesProps) => {
     const { lang } = useAppSelector((state) => state.bazaar);
     const [messages, setMessages] = useState<
         | Record<string, string>
