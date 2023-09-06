@@ -53,6 +53,13 @@ export const fetchNextProducts = async () => {
     return nextProducts;
 };
 
+/**
+ * Retrieves product information from the Firestore database by its unique identifier.
+ *
+ * @param {string} productId - The unique identifier of the product to retrieve.
+ * @returns {Promise<Object|null>} A promise that resolves to the product data if found, or null if not found.
+ * @throws {Error} Throws an error if there's an issue with Firestore communication.
+ */
 export const getProductById = async (productId: string) => {
     const docRef = doc(db, 'allProducts', productId);
     const docSnap = await getDoc(docRef);
@@ -60,6 +67,14 @@ export const getProductById = async (productId: string) => {
     return docSnap.data();
 };
 
+/**
+ * Updates a product in the Firestore database by its unique identifier.
+ *
+ * @param {string} productId - The unique identifier of the product to update.
+ * @param {Object} updateProduct - The updated product data to set in the database.
+ * @returns {Promise<void>} A promise that resolves when the update is successful.
+ * @throws {Error} Throws an error if there's an issue with Firestore communication.
+ */
 export const updateProductById = async (
     productId: string,
     updateProduct: IProduct

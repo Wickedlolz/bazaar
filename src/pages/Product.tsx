@@ -50,6 +50,12 @@ const Product = () => {
         toast.success(`${product?.title} is added to your cart.`);
     };
 
+    /**
+     * Rates a product by updating its rating in the Firestore database and dispatching the updated product.
+     *
+     * @param {number} rating - The rating to be given to the product.
+     * @throws {Error} Throws an error if there's an issue with updating the product in the database.
+     */
     const rateProduct = async (rating: number) => {
         const updatedProduct: IProduct = {
             ...product!,
