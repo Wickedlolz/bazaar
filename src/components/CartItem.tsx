@@ -11,11 +11,11 @@ import { IProduct } from '../interfaces/product';
 
 import { MdOutlineClose } from 'react-icons/md';
 
-interface IProps {
+type CardItemProps = {
     item: IProduct;
-}
+};
 
-const CartItem = ({ item }: IProps) => {
+const CartItem = ({ item }: CardItemProps) => {
     const dispatch = useAppDispatch();
     const intl = useIntl();
 

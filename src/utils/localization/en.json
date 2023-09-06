@@ -2,6 +2,7 @@
     "page_title": "| Bazaar - A Modern Shopping App",
     "auth_sign_in_with_google": "Sign in with Google",
     "auth_sign_out": "Sign Out",
+    "auth_sign_out_success": "Log Out successfully!",
     "cart_title_lbl": "Shopping Cart",
     "cart_is_empty_lbl": "Your Cart is Empty. Please go back to Shopping and add productsto Cart.",
     "cart_go_shopping_btn": "go shopping",
@@ -42,5 +43,7 @@
     "shop_product_banner_final_offer": "Final Offer",
     "shop_product_banner_show": "Show:",
     "not_found_page": "Page Not Found",
-    "go_home": "Go Home"
+    "go_home": "Go Home",
+    "rate_product_success": "You give successfully rate to",
+    "rate_product_error": "Sign in to rate this product!"
 }

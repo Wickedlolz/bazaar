@@ -7,7 +7,12 @@ export interface IProduct {
     description: string;
     category: string;
     image: string;
-    rating: number;
+    rating: IRating;
     quantity: number;
     brand?: string;
+}
+
+export interface IRating {
+    rate: number;
+    count: number;
 }

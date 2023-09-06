@@ -1,11 +1,11 @@
 import { BiCaretDown } from 'react-icons/bi';
 
-interface IProps {
+type NavTitleProps = {
     title: string;
     icons: boolean;
-}
+};
 
-const NavTitle = ({ title, icons }: IProps) => {
+const NavTitle = ({ title, icons }: NavTitleProps) => {
     return (
         <div className="flex items-center justify-between pb-5">
             {icons ? (

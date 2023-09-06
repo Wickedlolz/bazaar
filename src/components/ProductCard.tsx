@@ -8,11 +8,11 @@ import { IProduct } from '../interfaces/product';
 
 import { BsArrowRight } from 'react-icons/bs';
 
-interface IProps {
+type ProductCardProps = {
     product: IProduct;
-}
+};
 
-const ProductCard = ({ product }: IProps) => {
+const ProductCard = ({ product }: ProductCardProps) => {
     const dispatch = useAppDispatch();
 
     /**

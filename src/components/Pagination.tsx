@@ -7,7 +7,7 @@ import { IProduct } from '../interfaces/product';
 
 import ShopCard from './ShopCard';
 
-type PaginationType = {
+type PaginationProps = {
     itemsPerPage: number;
     products: IProduct[];
     girdViewActive: boolean;
@@ -17,7 +17,7 @@ const Pagination = ({
     itemsPerPage,
     products,
     girdViewActive,
-}: PaginationType) => {
+}: PaginationProps) => {
     const dispatch = useAppDispatch();
     const [itemOffset, setItemOffset] = useState<number>(0);
     const [itemStart, setItemStart] = useState<number>(1);

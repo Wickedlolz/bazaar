@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { IProduct } from '../interfaces/product';
 
-interface IProps {
+type ShopCardProps = {
     product: IProduct;
-}
+};
 
-const ShopCard = ({ product }: IProps) => {
+const ShopCard = ({ product }: ShopCardProps) => {
     return (
         <article className="group relative">
             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">

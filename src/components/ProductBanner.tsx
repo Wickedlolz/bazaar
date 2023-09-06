@@ -5,13 +5,13 @@ import { BsGridFill } from 'react-icons/bs';
 import { ImList } from 'react-icons/im';
 import { GoTriangleDown } from 'react-icons/go';
 
-interface IProps {
+type ProductBannerProps = {
     itemsPerPageFromBanner: (page: number) => void;
     girdViewActive: boolean;
     listViewActive: boolean;
     setGridViewActive: Dispatch<SetStateAction<boolean>>;
     setListViewActive: Dispatch<SetStateAction<boolean>>;
-}
+};
 
 const ProductBanner = ({
     itemsPerPageFromBanner,
@@ -19,7 +19,7 @@ const ProductBanner = ({
     setGridViewActive,
     listViewActive,
     setListViewActive,
-}: IProps) => {
+}: ProductBannerProps) => {
     const gridViewRef = useRef<HTMLSpanElement | null>(null);
     const listViewRef = useRef<HTMLSpanElement | null>(null);
     const gridViewEl = gridViewRef.current;
