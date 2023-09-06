@@ -37,7 +37,9 @@ const Login = () => {
     const handleSignOut = () => {
         logOut()
             .then(() => {
-                toast.success('Log Out successfully!');
+                toast.success(
+                    intl.formatMessage({ id: 'auth_sign_out_success' })
+                );
                 navigate('/');
             })
             .catch((error) => {

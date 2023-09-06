@@ -2,6 +2,7 @@
     "page_title": "| Bazaar - Модерно приложение за пазаруване",
     "auth_sign_in_with_google": "Влез със Google",
     "auth_sign_out": "Излез",
+    "auth_sign_out_success": "Излезохте успешно!",
     "cart_title_lbl": "Количка",
     "cart_is_empty_lbl": "Вашата количка е празна. Моля, върнете се към пазаруването и добавете продукти в количката.",
     "cart_go_shopping_btn": "върни се към пазаруването",
@@ -42,5 +43,7 @@
     "shop_product_banner_final_offer": "Окончателна оферта",
     "shop_product_banner_show": "Покажи:",
     "not_found_page": "Страницата не е намерена",
-    "go_home": "Върни се към началната страница"
+    "go_home": "Върни се към началната страница",
+    "rate_product_success": "Дадохте успешна оценка на",
+    "rate_product_error": "Влезте, за да оцените този продукт!"
 }
