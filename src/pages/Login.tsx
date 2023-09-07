@@ -17,12 +17,11 @@ const Login = () => {
      * This function initiates the Google sign-in process using the 'signInWithGoogle' function,
      * and upon successful authentication, navigates the user to the home page.
      *
-     * @returns {void}
+     * @returns {Promise<void>}
      */
-    const handleGoogleLogin = (): void => {
-        signInWithGoogle().then(() => {
-            navigate('/');
-        });
+    const handleGoogleLogin = async () => {
+        await signInWithGoogle();
+        navigate('/');
     };
 
     /**
@@ -32,20 +31,12 @@ const Login = () => {
      * and upon successful logout, displays a success toast message and navigates the user to the home page.
      * In case of an error during logout, displays an error toast message.
      *
-     * @returns {void}
+     * @returns {Promise<void>}
      */
-    const handleSignOut = () => {
-        logOut()
-            .then(() => {
-                toast.success(
-                    intl.formatMessage({ id: 'auth_sign_out_success' })
-                );
-                navigate('/');
-            })
-            .catch((error) => {
-                const errorString = error.message.substring(9).trim();
-                toast.error(errorString);
-            });
+    const handleSignOut = async () => {
+        await logOut();
+        toast.success(intl.formatMessage({ id: 'auth_sign_out_success' }));
+        navigate('/');
     };
 
     return (
