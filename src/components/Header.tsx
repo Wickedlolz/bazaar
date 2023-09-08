@@ -28,7 +28,12 @@ const Header = () => {
         dispatch(toggleTheme(null));
     };
 
-    const switchLanguage = () => {
+    /**
+     * Switches the language of the page.
+     *
+     * @returns {void}
+     */
+    const switchLanguage = (): void => {
         if (language === 'EN') {
             dispatch(changeLanguage('en-US'));
             setLanguage('BG');
