@@ -46,5 +46,8 @@
     "not_found_page": "Page Not Found",
     "go_home": "Go Home",
     "rate_product_success": "You give successfully rate to",
-    "rate_product_error": "Sign in to rate this product!"
+    "rate_product_error": "Sign in to rate this product!",
+    "header_home_btn": "Home",
+    "header_shop_btn": "Shop",
+    "header_about_us_btn": "About Us"
 }

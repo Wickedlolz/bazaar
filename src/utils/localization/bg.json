@@ -46,5 +46,8 @@
     "not_found_page": "Страницата не е намерена",
     "go_home": "Върни се към началната страница",
     "rate_product_success": "Дадохте успешна оценка на",
-    "rate_product_error": "Влезте, за да оцените този продукт!"
+    "rate_product_error": "Влезте, за да оцените този продукт!",
+    "header_home_btn": "Начало",
+    "header_shop_btn": "Пазарувай",
+    "header_about_us_btn": "За Нас"
 }

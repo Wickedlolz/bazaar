@@ -4,6 +4,7 @@ import { useFirebaseContext } from '../contexts/FirebaseContext';
 import { useAppDispatch, useAppSelector } from '../store';
 import { toggleTheme } from '../store/reducers/themeSlice';
 import { changeLanguage } from '../store/reducers/productsSlice';
+import { FormattedMessage } from 'react-intl';
 
 import { BiShoppingBag } from 'react-icons/bi';
 
@@ -58,7 +59,7 @@ const Header = () => {
                             }
                             to="/"
                         >
-                            Home
+                            <FormattedMessage id="header_home_btn" />
                         </NavLink>
                     </li>
                     <li>
@@ -70,7 +71,7 @@ const Header = () => {
                             }
                             to="/shop"
                         >
-                            Shop
+                            <FormattedMessage id="header_shop_btn" />
                         </NavLink>
                     </li>
                     <li>
@@ -82,7 +83,7 @@ const Header = () => {
                             }
                             to="/about-us"
                         >
-                            About Us
+                            <FormattedMessage id="header_about_us_btn" />
                         </NavLink>
                     </li>
                     <li>
