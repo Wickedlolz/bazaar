@@ -23,6 +23,7 @@
     "product_category_lbl": "Категория",
     "product_customer_review": "оценка",
     "product_quantity": "Количество",
+    "product_added_to_cart_success": "се добавя към вашата количка.",
     "footer_locate_us_lbl": "Намерете ни",
     "footer_mobile": "Мобилен",
     "footer_phone": "Телефон",
@@ -45,5 +46,8 @@
     "not_found_page": "Страницата не е намерена",
     "go_home": "Върни се към началната страница",
     "rate_product_success": "Дадохте успешна оценка на",
-    "rate_product_error": "Влезте, за да оцените този продукт!"
+    "rate_product_error": "Влезте, за да оцените този продукт!",
+    "header_home_btn": "Начало",
+    "header_shop_btn": "Пазарувай",
+    "header_about_us_btn": "За Нас"
 }

@@ -47,13 +47,19 @@ const Product = () => {
      */
     const handleAddToCart = (): void => {
         dispatch(addToCart({ ...product, quantity: productQuantity }));
-        toast.success(`${product?.title} is added to your cart.`);
+        toast.success(
+            `${product?.title} ${intl.formatMessage({
+                id: 'product_added_to_cart_success',
+            })}`
+        );
     };
 
     /**
      * Rates a product by updating its rating in the Firestore database and dispatching the updated product.
      *
      * @param {number} rating - The rating to be given to the product.
+     *
+     * @returns {Promise<void>}
      * @throws {Error} Throws an error if there's an issue with updating the product in the database.
      */
     const rateProduct = async (rating: number) => {
@@ -65,18 +71,18 @@ const Product = () => {
             },
         };
 
-        updateProductById(id!, updatedProduct)
-            .then(() => {
-                dispatch(updateProduct(updatedProduct));
-                toast.success(
-                    `${intl.formatMessage({ id: 'rate_product_success' })} ${
-                        product?.title
-                    }`
-                );
-            })
-            .catch((err) => {
-                toast.error(intl.formatMessage({ id: 'rate_product_error' }));
-            });
+        try {
+            await updateProductById(id!, updatedProduct);
+
+            dispatch(updateProduct(updatedProduct));
+            toast.success(
+                `${intl.formatMessage({ id: 'rate_product_success' })} ${
+                    product?.title
+                }`
+            );
+        } catch (error) {
+            toast.error(intl.formatMessage({ id: 'rate_product_error' }));
+        }
     };
 
     return (
