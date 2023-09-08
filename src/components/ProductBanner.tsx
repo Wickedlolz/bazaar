@@ -1,4 +1,4 @@
-import { useEffect, useRef, Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { BsGridFill } from 'react-icons/bs';
@@ -20,45 +20,31 @@ const ProductBanner = ({
     listViewActive,
     setListViewActive,
 }: ProductBannerProps) => {
-    const gridViewRef = useRef<HTMLSpanElement | null>(null);
-    const listViewRef = useRef<HTMLSpanElement | null>(null);
-    const gridViewEl = gridViewRef.current;
-    const listViewEl = listViewRef.current;
+    /**
+     * Switches the view mode to grid view and updates the state accordingly.
+     *
+     * @returns {void}
+     */
+    const changeToGridView = (): void => {
+        setListViewActive(false);
+        setGridViewActive(true);
+    };
 
-    useEffect(() => {
-        gridViewRef?.current?.addEventListener('click', () => {
-            setListViewActive(false);
-            setGridViewActive(true);
-        });
-        listViewRef?.current?.addEventListener('click', () => {
-            setGridViewActive(false);
-            setListViewActive(true);
-        });
-
-        return () => {
-            gridViewEl?.removeEventListener('click', () => {
-                setListViewActive(false);
-                setGridViewActive(true);
-            });
-            listViewEl?.removeEventListener('click', () => {
-                setGridViewActive(false);
-                setListViewActive(true);
-            });
-        };
-    }, [
-        girdViewActive,
-        listViewActive,
-        gridViewEl,
-        listViewEl,
-        setGridViewActive,
-        setListViewActive,
-    ]);
+    /**
+     * Switches the view mode to list view and updates the state accordingly.
+     *
+     * @returns {void}
+     */
+    const changeToListView = (): void => {
+        setGridViewActive(false);
+        setListViewActive(true);
+    };
 
     return (
         <div className="w-full flex flex-col md:flex-row md:items-center justify-between">
             <div className="flex items-center gap-4">
                 <span
-                    ref={gridViewRef}
+                    onClick={changeToGridView}
                     className={`${
                         girdViewActive
                             ? 'bg-primeColor text-white'
@@ -68,7 +54,7 @@ const ProductBanner = ({
                     <BsGridFill />
                 </span>
                 <span
-                    ref={listViewRef}
+                    onClick={changeToListView}
                     className={`${
                         listViewActive
                             ? 'bg-primeColor text-white'
