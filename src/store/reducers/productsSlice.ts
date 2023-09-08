@@ -4,7 +4,7 @@ import { IProduct, IRating } from '../../interfaces/product';
 import { collection, getDocs, limit, query } from 'firebase/firestore';
 import { db } from '../../firebase-config';
 import { PAGE_SIZE } from '../../utils/constants';
-import { IPrice } from '../../interfaces/priceList';
+import { IPrice } from '../../interfaces/price';
 
 export const fetchProducts = createAsyncThunk(FETCH_PRODUCTS, async () => {
     const paginationQuery = query(

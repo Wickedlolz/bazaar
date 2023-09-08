@@ -1,4 +1,4 @@
-import { ICategory } from '../interfaces/categoryItems';
+import { ICategory } from '../interfaces/category';
 
 export const items: ICategory[] = [
     {

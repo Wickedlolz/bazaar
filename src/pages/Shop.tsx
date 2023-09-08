@@ -5,7 +5,7 @@ import { useIntl, FormattedMessage } from 'react-intl';
 
 import ProductBanner from '../components/ProductBanner';
 import ShopSideNav from '../components/ShopSideNav';
-import { IPrice } from '../interfaces/priceList';
+import { IPrice } from '../interfaces/price';
 import Pagination from '../components/Pagination';
 
 const Shop = () => {
