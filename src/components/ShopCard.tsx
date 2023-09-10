@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { IProduct } from '../interfaces/product';
 
+import Image from './Image';
+
 type ShopCardProps = {
     product: IProduct;
 };
@@ -10,11 +12,11 @@ const ShopCard = ({ product }: ShopCardProps) => {
     return (
         <article className="group relative">
             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">
-                <img
+                <Image
+                    classes="h-full w-full object-cover object-center group-hover:scale-110 duration-500 lg:h-full lg:w-full"
                     src={product.image}
                     alt={product.title}
-                    className="h-full w-full object-cover object-center group-hover:scale-110 duration-500 lg:h-full lg:w-full"
-                    loading="lazy"
+                    lazy
                 />
             </div>
             <div className="mt-4 flex justify-between">
