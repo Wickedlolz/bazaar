@@ -22,7 +22,7 @@ Experience shopping that understands you. Through advanced AI algorithms, Bazaar
 
 Our app boasts a modern and intuitive design that enhances your shopping adventure. Effortlessly navigate through different sections, easily add items to your cart, and enjoy a smooth checkout process. Whether you're a tech-savvy individual or someone new to online shopping, Bazaar provides an accessible and enjoyable interface for all.
 
-Elevate your shopping game with Bazaar and experience the future of retail right at your fingertips. Download the app now and embark on a journey of style, convenience, and innovation.
+Elevate your shopping game with Bazaar and experience the future of retail right at your fingertips.
 
 # App Technologies
 
