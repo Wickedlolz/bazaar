@@ -7,15 +7,14 @@ import StripeCheckout, { Token } from 'react-stripe-checkout';
 import { Helmet } from 'react-helmet-async';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
-
-import { PAYMENT_URL } from '../utils/constants';
+import { addUserOrder, makePayment } from '../services/productService';
+import { IOrder } from '../interfaces/order';
 
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 
 import CartItem from '../components/CartItem';
 import CartHeader from '../assets/cart-header.jpeg';
 import EmptyCard from '../components/EmptyCard';
-import { addUserOrder, makePayment } from '../services/productService';
 
 const Cart = () => {
     const { productData } = useAppSelector((state) => state.cart);
@@ -72,7 +71,7 @@ const Cart = () => {
     const payment = async (token: Token): Promise<void> => {
         await makePayment(totalAmount, token);
 
-        const userData = {
+        const userData: IOrder = {
             user: {
                 displayName: user?.displayName!,
                 email: user?.email!,
