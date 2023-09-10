@@ -5,11 +5,11 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useAppSelector } from '../store';
 
-interface IProps {
+type MainLayoutProps = {
     children: ReactNode;
-}
+};
 
-const MainLayout = ({ children }: IProps) => {
+const MainLayout = ({ children }: MainLayoutProps) => {
     const isDarkTheme = useAppSelector((state) => state.theme.isDarkTheme);
 
     return (

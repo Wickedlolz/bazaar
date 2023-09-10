@@ -7,10 +7,11 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 import { updateProductById } from '../services/productService';
 
-import { IProduct, IRating } from '../interfaces/product';
+import { IProduct } from '../interfaces/product';
 
 import { MdOutlineStar } from 'react-icons/md';
 import { updateProduct } from '../store/reducers/productsSlice';
+import Image from '../components/Image';
 
 const Product = () => {
     const intl = useIntl();
@@ -95,12 +96,13 @@ const Product = () => {
                     </title>
                 </Helmet>
                 <div className="w-2/5 relative">
-                    <img
-                        className="w-full h-[550px] object-cover"
-                        src={product?.image}
-                        alt={product?.title}
+                    <Image
+                        classes="w-full h-[550px] object-cover"
+                        src={product?.image || ''}
+                        alt={product?.title || ''}
                         width={550}
                         height={550}
+                        lazy
                     />
                     <div className="absolute top-4 right-0">
                         {product?.isNew && (
@@ -137,8 +139,7 @@ const Product = () => {
                                     key={index}
                                     onClick={() => rateProduct(index + 1)}
                                     className={`text-2xl ${
-                                        index <
-                                        (product?.rating as IRating)?.rate
+                                        index < product?.rating?.rate!
                                             ? 'text-yellow-500'
                                             : 'text-gray-300'
                                     } hover:text-yellow-500`}

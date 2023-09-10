@@ -5,8 +5,10 @@ import { useAppDispatch, useAppSelector } from '../store';
 import { toggleTheme } from '../store/reducers/themeSlice';
 import { changeLanguage } from '../store/reducers/productsSlice';
 import { FormattedMessage } from 'react-intl';
+import { APP_TITLE } from '../utils/constants';
 
 import { BiShoppingBag } from 'react-icons/bi';
+import { HiMenuAlt3 } from 'react-icons/hi';
 
 const Header = () => {
     const { user } = useFirebaseContext();
@@ -17,6 +19,7 @@ const Header = () => {
     const [language, setLanguage] = useState<string>(
         lang === 'bg-BG' ? 'EN' : 'BG'
     );
+    const [openMenu, setOpenMenu] = useState<boolean>(false);
 
     /**
      * Toggles the application's theme between light and dark mode.
@@ -43,18 +46,30 @@ const Header = () => {
         }
     };
 
+    const openMenuClickHandler = () => {
+        setOpenMenu((state) => !state);
+    };
+
     return (
-        <header className="flex w-full h-20 items-center bg-white dark-theme justify-between px-16 border-b-2 sticky top-0 z-50">
-            <div>
+        <header className="flex w-full flex-col sm:flex-row sm:h-20 h-auto items-center bg-white dark-theme justify-between px-16 border-b-2 sticky top-0 z-50">
+            <div className="w-full pt-3 flex justify-between sm:block sm:w-auto">
                 <NavLink
                     to="/"
                     className="font-bold space-x-1 text-black dark:text-white text-2xl line-through"
                 >
-                    BAZAAR
+                    {APP_TITLE}
                 </NavLink>
+                <HiMenuAlt3
+                    onClick={openMenuClickHandler}
+                    className="text-3xl sm:hidden"
+                />
             </div>
-            <nav className="flex items-center gap-8">
-                <ul className="flex items-center gap-5">
+            <nav
+                className={`${
+                    openMenu ? 'flex' : 'hidden'
+                } items-center gap-8 flex-col sm:flex sm:flex-row`}
+            >
+                <ul className="flex items-center flex-col sm:flex-row gap-5">
                     <li>
                         <NavLink
                             className={({ isActive }) =>

@@ -1,4 +1,5 @@
 import { FormattedMessage, useIntl } from 'react-intl';
+import { APP_TITLE } from '../utils/constants';
 
 import { ImGithub } from 'react-icons/im';
 import {
@@ -19,10 +20,10 @@ const Footer = () => {
             <div className="max-w-screen-xl mx-10 grid grid-cols-4">
                 <div className="flex flex-col gap-7">
                     <h2 className="font-bold space-x-1 text-white text-4xl line-through">
-                        BAZAAR
+                        {APP_TITLE}
                     </h2>
                     <p className="text-white text-sm tracking-wide">
-                        &copy; Bazaar 2023
+                        &copy; {APP_TITLE} 2023
                     </p>
                     <div className="flex gap-5 text-lg text-gray-400">
                         <ImGithub className="hover:text-white duration-300 cursor-pointer" />

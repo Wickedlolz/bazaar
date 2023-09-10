@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { IProduct } from '../interfaces/product';
 
 import { BsArrowRight } from 'react-icons/bs';
+import Image from './Image';
 
 type ProductCardProps = {
     product: IProduct;
@@ -29,13 +30,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <article className="group relative">
             <Link to={`/product/${product._id}`}>
                 <div key={product._id} className="w-full h-96 overflow-hidden">
-                    <img
-                        className="w-full h-full object-cover group-hover:scale-110 duration-500"
+                    <Image
+                        classes="w-full h-full object-cover group-hover:scale-110 duration-500"
                         src={product.image}
                         alt={product.title}
                         width={250}
                         height={250}
-                        loading="lazy"
+                        lazy
                     />
                 </div>
             </Link>

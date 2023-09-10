@@ -7,13 +7,14 @@ import StripeCheckout, { Token } from 'react-stripe-checkout';
 import { Helmet } from 'react-helmet-async';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
-
-import { PAYMENT_URL } from '../utils/constants';
+import { addUserOrder, makePayment } from '../services/productService';
+import { IOrder } from '../interfaces/order';
 
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 
 import CartItem from '../components/CartItem';
 import CartHeader from '../assets/cart-header.jpeg';
+import EmptyCard from '../components/EmptyCard';
 
 const Cart = () => {
     const { productData } = useAppSelector((state) => state.cart);
@@ -60,49 +61,31 @@ const Cart = () => {
     };
 
     /**
-     * Initiates a payment request with the provided payment token.
+     * Initiates a payment request with the provided payment token
+     * and adding user products and info to firestore
      *
      * @param {Token} token - The payment token to be used for the transaction.
      *
-     * @returns {Promise<void>}
+     * @returns {Promise<void>} A Promise that resolves when the payment and order processing are completed.
      */
     const payment = async (token: Token): Promise<void> => {
-        await fetch(PAYMENT_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
+        await makePayment(totalAmount, token);
+
+        const userData: IOrder = {
+            user: {
+                displayName: user?.displayName!,
+                email: user?.email!,
             },
-            body: JSON.stringify({
-                amount: totalAmount * 100,
-                token,
-            }),
-        });
+            products: productData,
+        };
+
+        await addUserOrder(userData);
+
+        dispatch(resetCart(null));
     };
 
     if (productData.length === 0) {
-        return (
-            <div className="dark-theme">
-                <div className="max-w-screen-xl mx-auto py-32 flex flex-col items-center justify-center">
-                    <Helmet>
-                        <title>
-                            Cart{' '}
-                            {intl.formatMessage({ id: 'page_title' }) || ''}
-                        </title>
-                    </Helmet>
-                    <h2 className="text-base font-semibold text-orange-900">
-                        <FormattedMessage id="cart_is_empty_lbl" />
-                    </h2>
-                    <Link to="/">
-                        <button className="mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black dark:hover:text-white duration-300">
-                            <span>
-                                <HiOutlineArrowLeft />
-                            </span>
-                            <FormattedMessage id="cart_go_shopping_btn" />
-                        </button>
-                    </Link>
-                </div>
-            </div>
-        );
+        return <EmptyCard />;
     }
 
     return (

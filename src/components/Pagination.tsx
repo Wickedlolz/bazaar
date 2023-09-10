@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 import { useAppDispatch } from '../store';
 import { setProducts } from '../store/reducers/productsSlice';
 import { fetchNextProducts, getItemsCount } from '../services/productService';
@@ -93,4 +93,4 @@ const Pagination = ({
     );
 };
 
-export default Pagination;
+export default memo(Pagination);

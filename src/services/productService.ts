@@ -1,4 +1,5 @@
 import {
+    addDoc,
     collection,
     doc,
     getCountFromServer,
@@ -10,8 +11,10 @@ import {
     startAfter,
 } from 'firebase/firestore';
 import { db } from '../firebase-config';
-import { PAGE_SIZE } from '../utils/constants';
+import { PAGE_SIZE, PAYMENT_URL } from '../utils/constants';
 import { IProduct } from '../interfaces/product';
+import { IOrder } from '../interfaces/order';
+import { Token } from 'react-stripe-checkout';
 
 /**
  * Retrieves the total count of items from the 'allProducts' collection in the database.
@@ -81,4 +84,39 @@ export const updateProductById = async (
 ) => {
     const docRef = doc(db, 'allProducts', productId);
     await setDoc(docRef, updateProduct);
+};
+
+/**
+ * Adds a new user order to the 'orders' collection in the database.
+ *
+ * @param {IOrder} userData - The user order data to be added.
+ * @returns {Promise<void>} A Promise that resolves when the order is successfully added.
+ * @throws {Error} If there's an issue with adding the order to the database.
+ */
+export const addUserOrder = async (userData: IOrder): Promise<void> => {
+    await addDoc(collection(db, 'orders'), userData);
+};
+
+/**
+ * Makes a payment request to a specified payment URL using a provided token.
+ *
+ * @param {number} totalAmount - The total amount to be paid (in the smallest currency unit, e.g., cents).
+ * @param {Token} token - The payment token used for processing the payment.
+ * @returns {Promise<void>} A Promise that resolves when the payment request is successfully made.
+ * @throws {Error} If there's an issue with the payment request or the response indicates an error.
+ */
+export const makePayment = async (
+    totalAmount: number,
+    token: Token
+): Promise<void> => {
+    await fetch(PAYMENT_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            amount: totalAmount * 100,
+            token,
+        }),
+    });
 };
