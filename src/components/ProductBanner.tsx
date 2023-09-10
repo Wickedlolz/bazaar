@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, memo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { BsGridFill } from 'react-icons/bs';
@@ -117,4 +117,4 @@ const ProductBanner = ({
     );
 };
 
-export default ProductBanner;
+export default memo(ProductBanner);
