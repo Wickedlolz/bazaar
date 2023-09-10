@@ -15,6 +15,7 @@ import { HiOutlineArrowLeft } from 'react-icons/hi';
 import CartItem from '../components/CartItem';
 import CartHeader from '../assets/cart-header.jpeg';
 import EmptyCard from '../components/EmptyCard';
+import { addUserOrder, makePayment } from '../services/productService';
 
 const Cart = () => {
     const { productData } = useAppSelector((state) => state.cart);
@@ -61,23 +62,27 @@ const Cart = () => {
     };
 
     /**
-     * Initiates a payment request with the provided payment token.
+     * Initiates a payment request with the provided payment token
+     * and adding user products and info to firestore
      *
      * @param {Token} token - The payment token to be used for the transaction.
      *
-     * @returns {Promise<void>}
+     * @returns {Promise<void>} A Promise that resolves when the payment and order processing are completed.
      */
     const payment = async (token: Token): Promise<void> => {
-        await fetch(PAYMENT_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
+        await makePayment(totalAmount, token);
+
+        const userData = {
+            user: {
+                displayName: user?.displayName!,
+                email: user?.email!,
             },
-            body: JSON.stringify({
-                amount: totalAmount * 100,
-                token,
-            }),
-        });
+            products: productData,
+        };
+
+        await addUserOrder(userData);
+
+        dispatch(resetCart(null));
     };
 
     if (productData.length === 0) {
