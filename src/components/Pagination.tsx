@@ -1,7 +1,5 @@
 import { useEffect, useState, memo } from 'react';
-import { useAppDispatch } from '../store';
-import { setProducts } from '../store/reducers/productsSlice';
-import { fetchNextProducts, getItemsCount } from '../services/productService';
+import { getItemsCount } from '../services/productService';
 import ReactPaginate from 'react-paginate';
 import { IProduct } from '../interfaces/product';
 
@@ -18,7 +16,6 @@ const Pagination = ({
     products,
     girdViewActive,
 }: PaginationProps) => {
-    const dispatch = useAppDispatch();
     const [itemOffset, setItemOffset] = useState<number>(0);
     const [itemStart, setItemStart] = useState<number>(1);
     const [itemsCount, setItemsCount] = useState<number>(0);
@@ -34,25 +31,14 @@ const Pagination = ({
     const pageCount = Math.ceil(itemsCount / itemsPerPage);
 
     /**
-     * Handles a page click event, updating the item offset and loading additional products if needed.
+     * Handles a page click event by updating the item offset and start index.
      *
-     * @param {object} event - The page click event object with a 'selected' property indicating the new page index.
+     * @param {object} event - The page click event object containing the selected page number.
+     * @param {number} event.selected - The selected page number.
      * @returns {void}
      */
     const handlePageClick = (event: { selected: number }): void => {
         const newOffset = (event.selected * itemsPerPage) % itemsCount;
-
-        if (newOffset + itemsPerPage > products.length) {
-            fetchNextProducts().then((nextProducts) => {
-                const mappedProducts = nextProducts.docs.map((doc) => ({
-                    _id: doc.id,
-                    ...doc.data(),
-                }));
-
-                dispatch(setProducts(mappedProducts));
-            });
-        }
-
         setItemOffset(newOffset);
         setItemStart(newOffset);
     };

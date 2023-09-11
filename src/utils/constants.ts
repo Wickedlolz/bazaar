@@ -1,4 +1,4 @@
-export const PAGE_SIZE: number = 48;
+export const PAGE_SIZE: number = 60;
 
 export const PAYMENT_URL: string =
     'https://iwindy-server.vercel.app/api/payment/pay';
