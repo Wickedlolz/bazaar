@@ -57,7 +57,7 @@ const ProductBanner = ({
                     onClick={changeToListView}
                     className={`${
                         listViewActive
-                            ? 'bg-primeColor text-white'
+                            ? 'bg-primarColor text-white'
                             : 'border-[1px] border-gray-300 text-[#737373]'
                     } w-8 h-8 text-base flex items-center justify-center cursor-pointer listView`}
                 >
