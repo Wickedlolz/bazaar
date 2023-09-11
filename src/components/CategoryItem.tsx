@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import Image from './Image';
 
 type CategoryItemProps = {
@@ -21,7 +22,7 @@ const CategoryItem = ({ item }: CategoryItemProps) => {
             <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
                 <h1 className="text-white mb-5 text-3xl">{item.title}</h1>
                 <button className="border-none p-2 bg-white text-gray-600 font-bold">
-                    SHOP NOW
+                    <FormattedMessage id="categories_shop_now_lbl" />
                 </button>
             </div>
         </Link>
