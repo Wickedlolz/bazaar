@@ -8,7 +8,7 @@ import { items } from '../utils/categoryData';
 import NavTitle from './NavTitle';
 import { ImPlus } from 'react-icons/im';
 
-const Category = () => {
+const AsideCategory = () => {
     const dispatch = useAppDispatch();
     const { selectedCategory } = useAppSelector((state) => state.bazaar);
     const intl = useIntl();
@@ -52,4 +52,4 @@ const Category = () => {
     );
 };
 
-export default Category;
+export default AsideCategory;
