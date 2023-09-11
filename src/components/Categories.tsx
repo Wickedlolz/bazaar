@@ -1,5 +1,6 @@
 import CategoryItem from './CategoryItem';
 
+// TODO: this should be removed
 const categories = [
     {
         id: 1,
