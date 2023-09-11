@@ -51,7 +51,7 @@ const Header = () => {
     };
 
     return (
-        <header className="flex w-full flex-col sm:flex-row sm:h-20 h-auto items-center bg-white dark-theme justify-between px-16 border-b-2 sticky top-0 z-50">
+        <header className="flex w-full flex-col sm:flex-row sm:h-20 h-auto items-center bg-white dark-theme justify-between px-10 border-b-2 sticky top-0 z-50">
             <div className="w-full pt-3 flex justify-between sm:block sm:w-auto">
                 <NavLink
                     to="/"
@@ -67,7 +67,7 @@ const Header = () => {
             <nav
                 className={`${
                     openMenu ? 'flex' : 'hidden'
-                } items-center gap-8 flex-col sm:flex sm:flex-row`}
+                } items-center gap-5 flex-col sm:flex sm:flex-row`}
             >
                 <ul className="flex items-center flex-col sm:flex-row gap-5">
                     <li>
