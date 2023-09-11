@@ -22,7 +22,7 @@ const Cart = () => {
     const { user } = useFirebaseContext();
     const intl = useIntl();
     const [totalAmount, setTotalAmount] = useState<number>(0);
-    const [payNow, setPayNow] = useState<boolean>(false);
+    const [canPay, setCanPay] = useState<boolean>(false);
 
     useEffect(() => {
         const price = productData.reduce(
@@ -53,9 +53,9 @@ const Cart = () => {
      */
     const handleCheckout = (): void => {
         if (user) {
-            setPayNow(true);
+            setCanPay(true);
         } else {
-            setPayNow(false);
+            setCanPay(false);
             toast.error(intl.formatMessage({ id: 'cart_sign_in' }));
         }
     };
@@ -68,7 +68,7 @@ const Cart = () => {
      *
      * @returns {Promise<void>} A Promise that resolves when the payment and order processing are completed.
      */
-    const payment = async (token: Token): Promise<void> => {
+    const handlePayment = async (token: Token): Promise<void> => {
         await makePayment(totalAmount, token);
 
         const userData: IOrder = {
@@ -161,7 +161,7 @@ const Cart = () => {
                     >
                         <FormattedMessage id="cart_proceed_to_checkout" />
                     </button>
-                    {payNow && (
+                    {canPay && (
                         <div className="w-full mt-6 flex items-center justify-center">
                             <StripeCheckout
                                 stripeKey={
@@ -171,7 +171,7 @@ const Cart = () => {
                                 amount={totalAmount * 100}
                                 label="Pay to bazaar"
                                 description={`Your Payment amount is $${totalAmount}`}
-                                token={payment}
+                                token={handlePayment}
                                 email={user?.email!}
                             />
                         </div>
