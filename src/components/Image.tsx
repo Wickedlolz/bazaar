@@ -3,8 +3,8 @@ import useProgressiveImg from '../hooks/useProgressiveImg';
 
 type ImageProps = {
     src: string;
-    classes: string;
     alt: string;
+    classes?: string;
     width?: number;
     height?: number;
     lazy?: boolean;
