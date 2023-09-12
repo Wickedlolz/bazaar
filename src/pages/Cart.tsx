@@ -15,6 +15,7 @@ import { HiOutlineArrowLeft } from 'react-icons/hi';
 import CartItem from '../components/CartItem';
 import CartHeader from '../assets/cart-header.jpeg';
 import EmptyCard from '../components/EmptyCard';
+import Image from '../components/Image';
 
 const Cart = () => {
     const { productData } = useAppSelector((state) => state.cart);
@@ -95,11 +96,11 @@ const Cart = () => {
                     Cart {intl.formatMessage({ id: 'page_title' }) || ''}
                 </title>
             </Helmet>
-            <img
-                className="w-full h-60 object-cover"
+            <Image
+                classes="w-full h-60 object-cover"
                 src={CartHeader}
                 alt="cart cover"
-                loading="lazy"
+                lazy
             />
             <div className="max-w-screen-xl mx-auto py-20 flex">
                 <div className="w-2/3 pr-10">
