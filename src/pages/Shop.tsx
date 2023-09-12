@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useAppSelector } from '../store';
 import { Helmet } from 'react-helmet-async';
 import { useIntl, FormattedMessage } from 'react-intl';
@@ -28,22 +28,27 @@ const Shop = () => {
         setItemsPerPage(itemsPerPage);
     };
 
-    const filteredProductsByCategory =
-        selectedCategory === 'all'
-            ? products
-            : products.filter(
-                  (product) => product.category === selectedCategory
-              );
+    const filteredProducts = useMemo(() => {
+        const filteredProductsByCategory =
+            selectedCategory === 'all'
+                ? products
+                : products.filter(
+                      (product) => product.category === selectedCategory
+                  );
 
-    const finalFilteredProducts =
-        (selectedPriceRange as string) === 'all'
-            ? filteredProductsByCategory
-            : filteredProductsByCategory.filter(
-                  (product) =>
-                      product.price >=
-                          (selectedPriceRange as IPrice)?.priceOne &&
-                      product.price <= (selectedPriceRange as IPrice)?.priceTwo
-              );
+        const finalFilteredProducts =
+            (selectedPriceRange as string) === 'all'
+                ? filteredProductsByCategory
+                : filteredProductsByCategory.filter(
+                      (product) =>
+                          product.price >=
+                              (selectedPriceRange as IPrice)?.priceOne &&
+                          product.price <=
+                              (selectedPriceRange as IPrice)?.priceTwo
+                  );
+
+        return finalFilteredProducts;
+    }, [products, selectedCategory, selectedPriceRange]);
 
     return (
         <div className="max-w-container mx-auto px-4 dark-theme">
@@ -72,7 +77,7 @@ const Shop = () => {
                     <Pagination
                         itemsPerPage={itemsPerPage}
                         girdViewActive={girdViewActive}
-                        products={finalFilteredProducts}
+                        products={filteredProducts}
                     />
                 </div>
             </div>
