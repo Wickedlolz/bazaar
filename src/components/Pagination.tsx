@@ -31,7 +31,7 @@ const Pagination = ({
     const pageCount = Math.ceil(itemsCount / itemsPerPage);
 
     /**
-     * Handles a page click event by updating the item offset and start index.
+     * Handles a page click event by updating the item offset and start index then scroll to top.
      *
      * @param {object} event - The page click event object containing the selected page number.
      * @param {number} event.selected - The selected page number.
@@ -41,6 +41,11 @@ const Pagination = ({
         const newOffset = (event.selected * itemsPerPage) % itemsCount;
         setItemOffset(newOffset);
         setItemStart(newOffset);
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+        });
     };
 
     return (
