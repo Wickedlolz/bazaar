@@ -9,6 +9,7 @@ import { APP_TITLE } from '../utils/constants';
 
 import { BiShoppingBag } from 'react-icons/bi';
 import { HiMenuAlt3 } from 'react-icons/hi';
+import Image from './Image';
 
 const Header = () => {
     const { user } = useFirebaseContext();
@@ -181,8 +182,8 @@ const Header = () => {
                         }
                         to="/login"
                     >
-                        <img
-                            className="rounded-full"
+                        <Image
+                            classes="rounded-full"
                             src={
                                 user?.photoURL ||
                                 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80'
@@ -190,6 +191,7 @@ const Header = () => {
                             width={30}
                             height={30}
                             alt="User Profile"
+                            lazy
                         />
                     </NavLink>
                     {user && (
