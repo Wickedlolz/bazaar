@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useFirebaseContext } from '../contexts/FirebaseContext';
-import { useAppDispatch, useAppSelector } from '../store';
-import { toggleTheme } from '../store/reducers/themeSlice';
-import { changeLanguage } from '../store/reducers/productsSlice';
+import { useFirebaseContext } from '../../../contexts/FirebaseContext';
+import { useAppDispatch, useAppSelector } from '../../../store';
+import { toggleTheme } from '../../../store/reducers/themeSlice';
+import { changeLanguage } from '../../../store/reducers/productsSlice';
 import { FormattedMessage } from 'react-intl';
-import { APP_TITLE } from '../utils/constants';
+import { APP_TITLE } from '../../../utils/constants';
 
 import { BiShoppingBag } from 'react-icons/bi';
 import { HiMenuAlt3 } from 'react-icons/hi';
-import Image from './Image';
+import Image from '../Image';
 
 const Header = () => {
     const { user } = useFirebaseContext();

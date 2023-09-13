@@ -1,5 +1,5 @@
 import { FormattedMessage, useIntl } from 'react-intl';
-import { APP_TITLE } from '../utils/constants';
+import { APP_TITLE } from '../../utils/constants';
 
 import { ImGithub } from 'react-icons/im';
 import {

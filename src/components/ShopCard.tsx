@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { IProduct } from '../interfaces/product';
 
-import Image from './Image';
+import Image from './common/Image';
 
 type ShopCardProps = {
     product: IProduct;

@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import useProgressiveImg from '../hooks/useProgressiveImg';
+import useProgressiveImg from '../../hooks/useProgressiveImg';
 
 type ImageProps = {
     src: string;

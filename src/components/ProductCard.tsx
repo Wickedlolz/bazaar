@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { IProduct } from '../interfaces/product';
 
 import { BsArrowRight } from 'react-icons/bs';
-import Image from './Image';
+import Image from './common/Image';
 
 type ProductCardProps = {
     product: IProduct;

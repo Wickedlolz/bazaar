@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import { ToastContainer } from 'react-toastify';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/common/Header/Header';
+import Footer from '../components/common/Footer';
 import { useAppSelector } from '../store';
 
 type MainLayoutProps = {

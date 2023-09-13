@@ -15,7 +15,7 @@ import { HiOutlineArrowLeft } from 'react-icons/hi';
 import CartItem from '../components/CartItem';
 import CartHeader from '../assets/cart-header.jpeg';
 import EmptyCard from '../components/EmptyCard';
-import Image from '../components/Image';
+import Image from '../components/common/Image';
 
 const Cart = () => {
     const { productData } = useAppSelector((state) => state.cart);

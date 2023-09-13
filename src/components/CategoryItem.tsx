@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import Image from './Image';
+import Image from './common/Image';
 
 type CategoryItemProps = {
     item: {

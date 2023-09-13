@@ -11,7 +11,7 @@ import { IProduct } from '../interfaces/product';
 
 import { MdOutlineStar } from 'react-icons/md';
 import { updateProduct } from '../store/reducers/productsSlice';
-import Image from '../components/Image';
+import Image from '../components/common/Image';
 
 const Product = () => {
     const intl = useIntl();
