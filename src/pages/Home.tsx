@@ -5,6 +5,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Banner from '../components/Banner';
 import ProductCard from '../components/ProductCard';
 import Categories from '../components/Categories';
+import Promo from '../components/Promo';
 
 const Home = () => {
     const intl = useIntl();
@@ -18,13 +19,14 @@ const Home = () => {
                 </title>
             </Helmet>
             <Banner />
+            <Promo />
             <Categories />
             <section className="py-10 dark-theme">
                 <div className="flex flex-col items-center gap-4">
                     <h1 className="text-2xl bg-black text-white dark:bg-white dark:text-black py-2 w-80 text-center">
                         <FormattedMessage id="shop_everyday_title" />
                     </h1>
-                    <span className="w-20 h-[3px] bg-black"></span>
+                    <span className="w-20 h-[3px] bg-black dark:bg-white"></span>
                     <p className="max-w-[700px] text-gray-600 dark:text-white text-center">
                         <FormattedMessage id="shop_everyday_desc" />
                     </p>
