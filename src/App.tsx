@@ -2,11 +2,10 @@ import { useEffect } from 'react';
 import { useAppDispatch } from './store';
 import { fetchProducts } from './store/reducers/productsSlice';
 import { HelmetProvider } from 'react-helmet-async';
-
-import MainLayout from './layouts/MainLayout';
-import AppRoutes from './routes/AppRoutes';
 import { FirebaseProvider } from './contexts/FirebaseContext';
+
 import Locales from './components/Locales';
+import AppRoutes from './routes/AppRoutes';
 
 const App = () => {
     const dispatch = useAppDispatch();
@@ -19,9 +18,7 @@ const App = () => {
         <FirebaseProvider>
             <HelmetProvider>
                 <Locales>
-                    <MainLayout>
-                        <AppRoutes />
-                    </MainLayout>
+                    <AppRoutes />
                 </Locales>
             </HelmetProvider>
         </FirebaseProvider>

@@ -1,21 +1,19 @@
-import { ReactNode } from 'react';
+import { Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import Header from '../components/common/Header/Header';
 import Footer from '../components/common/Footer';
 import { useAppSelector } from '../store';
 
-type MainLayoutProps = {
-    children: ReactNode;
-};
-
-const MainLayout = ({ children }: MainLayoutProps) => {
+const MainLayout = () => {
     const isDarkTheme = useAppSelector((state) => state.theme.isDarkTheme);
 
     return (
         <div className={isDarkTheme ? 'dark' : ''}>
             <Header />
-            <main>{children}</main>
+            <main>
+                <Outlet />
+            </main>
             <Footer />
             <ToastContainer
                 position="top-left"
