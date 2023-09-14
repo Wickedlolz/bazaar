@@ -10,6 +10,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { IProduct } from '../interfaces/product';
 
 import { MdOutlineClose } from 'react-icons/md';
+import Image from './common/Image';
 
 type CardItemProps = {
     item: IProduct;
@@ -35,11 +36,11 @@ const CartItem = ({ item }: CardItemProps) => {
                     onClick={handleDeleteItem}
                     className="text-xl text-gray-600 hover:text-red-600 cursor-pointer duration-300"
                 />
-                <img
-                    className="w-32 h-32 object-cover"
+                <Image
+                    classes="w-32 h-32 object-cover"
                     src={item.image}
                     alt={item.title}
-                    loading="lazy"
+                    lazy
                 />
             </div>
             <h2 className="w-52">{item.title}</h2>
