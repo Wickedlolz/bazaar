@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import Header from '../components/common/Header/Header';
@@ -11,6 +11,7 @@ const MainLayout = () => {
     return (
         <div className={isDarkTheme ? 'dark' : ''}>
             <Header />
+            <ScrollRestoration />
             <main>
                 <Outlet />
             </main>
