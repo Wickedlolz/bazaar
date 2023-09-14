@@ -12,9 +12,12 @@ type CategoryItemProps = {
 
 const CategoryItem = ({ item }: CategoryItemProps) => {
     return (
-        <Link to="/shop" className="flex-1 m-1 h-[80vh] relative">
+        <Link
+            to="/shop"
+            className="flex-1 m-1 h-[80vh] relative group overflow-hidden"
+        >
             <Image
-                classes="w-full h-full object-cover"
+                classes="w-full h-full object-cover group-hover:scale-110 duration-500"
                 src={item.img}
                 alt={item.title}
                 lazy
