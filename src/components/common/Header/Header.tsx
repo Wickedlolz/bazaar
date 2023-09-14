@@ -41,7 +41,7 @@ const Header = () => {
                                 ? 'border-[2px] border-orange-800 p-1 rounded-full'
                                 : ''
                         }
-                        to="/login"
+                        to={user ? '/profile' : '/login'}
                     >
                         <img
                             className="rounded-full"
