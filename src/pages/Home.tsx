@@ -15,7 +15,8 @@ const Home = () => {
         <>
             <Helmet>
                 <title>
-                    Home {intl.formatMessage({ id: 'page_title' }) || ''}
+                    {intl.formatMessage({ id: 'header_home_btn' })}{' '}
+                    {intl.formatMessage({ id: 'page_title' }) || ''}
                 </title>
             </Helmet>
             <Banner />
