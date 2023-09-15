@@ -51,7 +51,7 @@ const Shop = () => {
     }, [products, selectedCategory, selectedPriceRange]);
 
     return (
-        <div className="max-w-container mx-auto px-4 dark-theme">
+        <section className="max-w-container mx-auto px-4 dark-theme">
             <Helmet>
                 <title>
                     Shop {intl.formatMessage({ id: 'page_title' }) || ''}
@@ -81,7 +81,7 @@ const Shop = () => {
                     />
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

@@ -24,7 +24,7 @@ const Login = () => {
     };
 
     return (
-        <div className="w-full flex flex-col dark-theme items-center justify-center gap-10 py-20">
+        <section className="w-full flex flex-col dark-theme items-center justify-center gap-10 py-20">
             <Helmet>
                 <title>
                     Login {intl.formatMessage({ id: 'page_title' }) || ''}
@@ -41,7 +41,7 @@ const Login = () => {
                     </span>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
