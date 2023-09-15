@@ -34,7 +34,7 @@ const Header = () => {
                 } items-center gap-5 flex-col sm:flex sm:flex-row`}
             >
                 <NavLinks />
-                <div className="flex items-center gap-5">
+                <div className="flex items-center gap-2">
                     <NavLink
                         className={({ isActive }) =>
                             isActive

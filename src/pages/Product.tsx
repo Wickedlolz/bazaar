@@ -87,7 +87,7 @@ const Product = () => {
     };
 
     return (
-        <div className="dark-theme">
+        <section className="dark-theme">
             <div className="max-w-screen-xl mx-auto py-10 flex gap-10">
                 <Helmet>
                     <title>
@@ -199,7 +199,7 @@ const Product = () => {
                     </p>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

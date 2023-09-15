@@ -32,7 +32,7 @@ const Home = () => {
                         <FormattedMessage id="shop_everyday_desc" />
                     </p>
                 </div>
-                <div className="max-w-screen-xl mx-auto py-10 grid grid-cols-2 gap-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                <div className="max-w-screen-xl mx-auto py-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {products
                         .filter(
                             (x) =>

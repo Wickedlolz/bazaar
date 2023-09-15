@@ -50,5 +50,7 @@
     "header_home_btn": "Home",
     "header_shop_btn": "Shop",
     "header_about_us_btn": "About Us",
-    "categories_shop_now_lbl": "SHOP NOW"
+    "categories_shop_now_lbl": "SHOP NOW",
+    "profile": "Profile",
+    "profile-your-orders": "Your Orders"
 }

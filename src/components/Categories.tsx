@@ -21,7 +21,7 @@ const categories = [
 
 const Categories = () => {
     return (
-        <section className="py-9 dark-theme flex justify-between p-5">
+        <section className="py-9 dark-theme flex flex-col lg:flex-row justify-between p-5">
             {categories.map((item) => (
                 <CategoryItem key={item.id} item={item} />
             ))}
