@@ -9,6 +9,7 @@ import {
     query,
     setDoc,
     startAfter,
+    where,
 } from 'firebase/firestore';
 import { db } from '../firebase-config';
 import { PAGE_SIZE, PAYMENT_URL } from '../utils/constants';
@@ -119,4 +120,29 @@ export const makePayment = async (
             token,
         }),
     });
+};
+
+/**
+ * Retrieves all products associated with orders from the Firestore database
+ * based on the provided user email.
+ *
+ * @param {string} userEmail - The email of the user to fetch orders for.
+ * @returns {Promise<Array<IProduct>>} A promise that resolves to an array of products
+ * extracted from orders associated with the provided user email.
+ */
+export const getOrders = async (
+    userEmail: string
+): Promise<Array<IProduct>> => {
+    const collectionRef = collection(db, 'orders');
+    const q = query(collectionRef, where('user.email', '==', userEmail));
+    const ordersData = await getDocs(q);
+
+    const products: IProduct[] = [];
+
+    ordersData.docs.forEach((order) => {
+        const orderProducts: IProduct[] = order.data().products;
+        products.push(...orderProducts);
+    });
+
+    return products;
 };
