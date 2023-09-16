@@ -16,7 +16,7 @@ const Banner = () => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             setCurrentSlide((prev) => (prev === 4 ? 0 : prev + 1));
-        }, 14000);
+        }, 15000);
 
         return () => clearInterval(intervalId);
     }, []);
