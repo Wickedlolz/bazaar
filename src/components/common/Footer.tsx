@@ -12,6 +12,8 @@ import {
 import { BsPersonFill, BsPaypal } from 'react-icons/bs';
 import { MdLocationOn } from 'react-icons/md';
 
+import PaymentLogo from '../../assets/payment.png';
+
 const Footer = () => {
     const intl = useIntl();
 
@@ -25,6 +27,11 @@ const Footer = () => {
                     <p className="text-white text-sm tracking-wide">
                         &copy; {APP_TITLE} 2023
                     </p>
+                    <img
+                        className="w-56 object-cover"
+                        src={PaymentLogo}
+                        alt="paymentLogo"
+                    />
                     <div className="flex gap-5 text-lg text-gray-400">
                         <ImGithub className="hover:text-white duration-300 cursor-pointer" />
                         <FaYoutube className="hover:text-white duration-300 cursor-pointer" />

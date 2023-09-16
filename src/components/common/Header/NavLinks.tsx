@@ -42,7 +42,7 @@ const NavLinks = () => {
     };
 
     return (
-        <ul className="flex items-center flex-col sm:flex-row gap-5">
+        <ul className="flex items-center flex-col sm:flex-row gap-4">
             <li>
                 <NavLink
                     className={({ isActive }) =>
@@ -65,18 +65,6 @@ const NavLinks = () => {
                     to="/shop"
                 >
                     <FormattedMessage id="header_shop_btn" />
-                </NavLink>
-            </li>
-            <li>
-                <NavLink
-                    className={({ isActive }) =>
-                        isActive
-                            ? 'text-base font-bold text-orange-900 underline underline-offset-2 decoration-[1px] duration-300'
-                            : 'text-base font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] duration-300'
-                    }
-                    to="/about-us"
-                >
-                    <FormattedMessage id="header_about_us_btn" />
                 </NavLink>
             </li>
             <li>
