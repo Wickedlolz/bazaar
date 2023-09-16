@@ -13,6 +13,7 @@ import Shop from '../pages/Shop';
 import NotFound from '../pages/NotFound';
 import Profile from '../pages/Profile';
 import Login from '../pages/Login';
+import OrderHistory from '../pages/OrderHistory';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
             <Route path="/shop" element={<Shop />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/order-history" element={<OrderHistory />} />
             <Route path="*" element={<NotFound />} />
         </Route>
     )
