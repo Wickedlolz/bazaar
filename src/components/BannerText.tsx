@@ -13,10 +13,10 @@ const BannerText = ({ title }: BannerTextProps) => {
                 <FormattedMessage id="banner_one_text_2" />
             </p>
             <div className="flex gap-x-4 mt-2">
-                <button className="py-3 px-6 rounded-full bg-slate-200 hover:bg-white duration-200 text-sm uppercase font-semibold">
+                <button className="py-3 px-6 bg-slate-200 hover:bg-white duration-200 text-sm uppercase font-semibold">
                     <FormattedMessage id="find_out_more" />
                 </button>
-                <button className="py-3 px-6 rounded-full bg-slate-200 hover:bg-white duration-200 text-sm uppercase font-semibold">
+                <button className="py-3 px-6 bg-slate-200 hover:bg-white duration-200 text-sm uppercase font-semibold">
                     <FormattedMessage id="categories_shop_now_lbl" />
                 </button>
             </div>
