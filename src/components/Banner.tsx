@@ -1,28 +1,32 @@
 import { useState, useEffect } from 'react';
+import { useIntl } from 'react-intl';
 import { HiArrowLeft, HiArrowRight } from 'react-icons/hi';
 
 import BannerImg1 from '../assets/img1.jpeg';
 import BannerImg2 from '../assets/img2.jpg';
 import BannerImg3 from '../assets/img3.jpg';
 import BannerImg4 from '../assets/img4.jpg';
+import BannerOne from '../assets/bannerone.jpeg';
+import BannerText from './BannerText';
 
 const Banner = () => {
+    const intl = useIntl();
     const [currentSlide, setCurrentSlide] = useState<number>(0);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setCurrentSlide((prev) => (prev === 3 ? 0 : prev + 1));
-        }, 15000);
+            setCurrentSlide((prev) => (prev === 4 ? 0 : prev + 1));
+        }, 14000);
 
         return () => clearInterval(intervalId);
     }, []);
 
     const prevSlide = () => {
-        setCurrentSlide(currentSlide === 0 ? 3 : (prev) => prev - 1);
+        setCurrentSlide(currentSlide === 0 ? 4 : (prev) => prev - 1);
     };
 
     const nextSlide = () => {
-        setCurrentSlide(currentSlide === 3 ? 0 : (prev) => prev + 1);
+        setCurrentSlide(currentSlide === 4 ? 0 : (prev) => prev + 1);
     };
 
     return (
@@ -34,6 +38,14 @@ const Banner = () => {
                     }}
                     className="w-[400vw] h-full flex transition-transform duration-1000"
                 >
+                    <img
+                        src={BannerOne}
+                        alt="Banner One"
+                        className="w-screen h-full object-cover"
+                    />
+                    <BannerText
+                        title={intl.formatMessage({ id: 'outwear_picks' })}
+                    />
                     <img
                         src={BannerImg1}
                         alt="Banner  1"
