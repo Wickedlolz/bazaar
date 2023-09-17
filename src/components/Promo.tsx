@@ -1,4 +1,13 @@
 import { Link } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
+
+import HeroImage1 from '../assets/hero-image-tile-01.jpeg';
+import HeroImage2 from '../assets/hero-image-tile-02.jpeg';
+import HeroImage3 from '../assets/hero-image-tile-03.jpeg';
+import HeroImage4 from '../assets/hero-image-tile-04.jpeg';
+import HeroImage5 from '../assets/hero-image-tile-05.jpeg';
+import HeroImage6 from '../assets/hero-image-tile-06.jpeg';
+import HeroImage7 from '../assets/hero-image-tile-07.jpeg';
 
 import Image from './common/Image';
 
@@ -9,12 +18,10 @@ const Promo = () => {
                 <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
                     <div className="sm:max-w-lg">
                         <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark-theme">
-                            Summer styles are finally here
+                            <FormattedMessage id="promo_title" />
                         </h1>
                         <p className="mt-4 text-xl text-gray-500 dark-theme">
-                            This year, our new summer collection will shelter
-                            you from the harsh elements of a world that doesn't
-                            care if you live or die.
+                            <FormattedMessage id="promo_desc" />
                         </p>
                     </div>
                     <div>
@@ -29,7 +36,7 @@ const Promo = () => {
                                         <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                                             <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                                                 <Image
-                                                    src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg"
+                                                    src={HeroImage1}
                                                     alt=""
                                                     classes="h-full w-full object-cover object-center"
                                                     lazy
@@ -37,33 +44,7 @@ const Promo = () => {
                                             </div>
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
                                                 <Image
-                                                    src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
-                                                    alt=""
-                                                    classes="h-full w-full object-cover object-center"
-                                                    lazy
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                                            <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <Image
-                                                    src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
-                                                    alt=""
-                                                    classes="h-full w-full object-cover object-center"
-                                                    lazy
-                                                />
-                                            </div>
-                                            <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <Image
-                                                    src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
-                                                    alt=""
-                                                    classes="h-full w-full object-cover object-center"
-                                                    lazy
-                                                />
-                                            </div>
-                                            <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <Image
-                                                    src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
+                                                    src={HeroImage2}
                                                     alt=""
                                                     classes="h-full w-full object-cover object-center"
                                                     lazy
@@ -73,7 +54,7 @@ const Promo = () => {
                                         <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
                                                 <Image
-                                                    src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-06.jpg"
+                                                    src={HeroImage3}
                                                     alt=""
                                                     classes="h-full w-full object-cover object-center"
                                                     lazy
@@ -81,7 +62,33 @@ const Promo = () => {
                                             </div>
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
                                                 <Image
-                                                    src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg"
+                                                    src={HeroImage4}
+                                                    alt=""
+                                                    classes="h-full w-full object-cover object-center"
+                                                    lazy
+                                                />
+                                            </div>
+                                            <div className="h-64 w-44 overflow-hidden rounded-lg">
+                                                <Image
+                                                    src={HeroImage5}
+                                                    alt=""
+                                                    classes="h-full w-full object-cover object-center"
+                                                    lazy
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                                            <div className="h-64 w-44 overflow-hidden rounded-lg">
+                                                <Image
+                                                    src={HeroImage6}
+                                                    alt=""
+                                                    classes="h-full w-full object-cover object-center"
+                                                    lazy
+                                                />
+                                            </div>
+                                            <div className="h-64 w-44 overflow-hidden rounded-lg">
+                                                <Image
+                                                    src={HeroImage7}
                                                     alt=""
                                                     classes="h-full w-full object-cover object-center"
                                                     lazy
@@ -96,7 +103,7 @@ const Promo = () => {
                                 to="/shop"
                                 className="inline-block border-[1px] border-black p-2 bg-white text-gray-600 font-bold"
                             >
-                                Shop Collection
+                                <FormattedMessage id="shop_collection" />
                             </Link>
                         </div>
                     </div>
