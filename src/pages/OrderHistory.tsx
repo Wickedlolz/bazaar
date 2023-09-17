@@ -14,31 +14,18 @@ const OrderHistory = () => {
     const { user } = useFirebaseContext();
     const [orderData, setOrderData] = useState<IProduct[] | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [totalAmount, setTotalAmount] = useState<string>('');
 
     useEffect(() => {
         setIsLoading(true);
         if (user?.email) {
             productService.getOrders(user.email).then((orders) => {
-                setOrderData(orders);
+                setOrderData(orders.products);
+                setTotalAmount(orders.totalAmount);
                 setIsLoading(false);
             });
         }
     }, [user?.email]);
-
-    /**
-     * Calculates the total amount based on the prices of products in the orderData array.
-     * If orderData is null or undefined, the total amount is considered 0.
-     *
-     * @returns {number} The total amount calculated from the product prices in orderData.
-     */
-    const calculateTotalAmount = () => {
-        const totalAmount = orderData?.reduce(
-            (acc, product) => acc + product.price,
-            0
-        );
-
-        return totalAmount;
-    };
 
     if (isLoading) {
         return (
@@ -112,9 +99,9 @@ const OrderHistory = () => {
                         </p>
                     </div>
                     <p className="py-2">
-                        <FormattedMessage id="Общо платено" />{' '}
+                        <FormattedMessage id="total_paid" />{' '}
                         <span className="text-xl font-semibold">
-                            {calculateTotalAmount()}
+                            {totalAmount}
                         </span>
                     </p>
                 </div>

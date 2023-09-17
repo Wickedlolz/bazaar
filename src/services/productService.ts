@@ -127,12 +127,12 @@ export const makePayment = async (
  * based on the provided user email.
  *
  * @param {string} userEmail - The email of the user to fetch orders for.
- * @returns {Promise<Array<IProduct>>} A promise that resolves to an array of products
+ * @returns {Promise<{products: IProduct[], totalAmount: number}>} A promise that resolves to an array of products
  * extracted from orders associated with the provided user email.
  */
 export const getOrders = async (
     userEmail: string
-): Promise<Array<IProduct>> => {
+): Promise<{ products: IProduct[]; totalAmount: string }> => {
     const collectionRef = collection(db, 'orders');
     const q = query(collectionRef, where('user.email', '==', userEmail));
     const ordersData = await getDocs(q);
@@ -144,5 +144,10 @@ export const getOrders = async (
         products.push(...orderProducts);
     });
 
-    return products;
+    const totalAmount = products?.reduce(
+        (acc, product) => acc + Number(product.price.toString()),
+        0
+    );
+
+    return { products, totalAmount: totalAmount?.toFixed(2) };
 };
