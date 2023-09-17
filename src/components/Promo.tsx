@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import Image from './common/Image';
+
 const Promo = () => {
     return (
         <div className="relative overflow-hidden bg-white mt-10 dark-theme">
@@ -26,56 +28,63 @@ const Promo = () => {
                                     <div className="flex items-center space-x-6 lg:space-x-8">
                                         <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                                             <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-                                                <img
+                                                <Image
                                                     src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg"
                                                     alt=""
-                                                    className="h-full w-full object-cover object-center"
+                                                    classes="h-full w-full object-cover object-center"
+                                                    lazy
                                                 />
                                             </div>
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <img
+                                                <Image
                                                     src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
                                                     alt=""
-                                                    className="h-full w-full object-cover object-center"
+                                                    classes="h-full w-full object-cover object-center"
+                                                    lazy
                                                 />
                                             </div>
                                         </div>
                                         <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <img
+                                                <Image
                                                     src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
                                                     alt=""
-                                                    className="h-full w-full object-cover object-center"
+                                                    classes="h-full w-full object-cover object-center"
+                                                    lazy
                                                 />
                                             </div>
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <img
+                                                <Image
                                                     src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
                                                     alt=""
-                                                    className="h-full w-full object-cover object-center"
+                                                    classes="h-full w-full object-cover object-center"
+                                                    lazy
                                                 />
                                             </div>
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <img
+                                                <Image
                                                     src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
                                                     alt=""
-                                                    className="h-full w-full object-cover object-center"
+                                                    classes="h-full w-full object-cover object-center"
+                                                    lazy
                                                 />
                                             </div>
                                         </div>
                                         <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <img
+                                                <Image
                                                     src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-06.jpg"
                                                     alt=""
-                                                    className="h-full w-full object-cover object-center"
+                                                    classes="h-full w-full object-cover object-center"
+                                                    lazy
                                                 />
                                             </div>
                                             <div className="h-64 w-44 overflow-hidden rounded-lg">
-                                                <img
+                                                <Image
                                                     src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg"
                                                     alt=""
-                                                    className="h-full w-full object-cover object-center"
+                                                    classes="h-full w-full object-cover object-center"
+                                                    lazy
                                                 />
                                             </div>
                                         </div>
