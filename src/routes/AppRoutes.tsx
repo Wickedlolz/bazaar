@@ -14,6 +14,8 @@ import NotFound from '../pages/NotFound';
 import Profile from '../pages/Profile';
 import Login from '../pages/Login';
 import OrderHistory from '../pages/OrderHistory';
+import AuthGuard from '../components/AuthGuard';
+import GuestGuard from '../components/GuestGuard';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -22,9 +24,15 @@ const router = createBrowserRouter(
             <Route path="/product/:id" element={<Product />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/shop" element={<Shop />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/order-history" element={<OrderHistory />} />
+            <Route path="/login" element={<GuestGuard />}>
+                <Route index element={<Login />} />
+            </Route>
+            <Route path="/profile" element={<AuthGuard />}>
+                <Route index element={<Profile />} />
+            </Route>
+            <Route path="/order-history" element={<AuthGuard />}>
+                <Route index element={<OrderHistory />} />
+            </Route>
             <Route path="*" element={<NotFound />} />
         </Route>
     )
