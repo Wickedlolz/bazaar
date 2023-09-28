@@ -174,6 +174,8 @@ const Cart = () => {
                                 description={`Your Payment amount is $${totalAmount}`}
                                 token={handlePayment}
                                 email={user?.email!}
+                                shippingAddress={true}
+                                image={CartHeader}
                             />
                         </div>
                     )}
