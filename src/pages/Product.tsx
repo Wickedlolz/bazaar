@@ -5,7 +5,7 @@ import { addToCart } from '../store/reducers/cartSlice';
 import { Helmet } from 'react-helmet-async';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
-import { updateProductById } from '../services/productService';
+import { productService } from '../services';
 
 import { IProduct } from '../interfaces/product';
 
@@ -73,7 +73,7 @@ const Product = () => {
         };
 
         try {
-            await updateProductById(id!, updatedProduct);
+            await productService.updateProductById(id!, updatedProduct);
 
             dispatch(updateProduct(updatedProduct));
             toast.success(
