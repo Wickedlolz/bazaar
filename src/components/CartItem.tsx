@@ -11,6 +11,7 @@ import { IProduct } from '../interfaces/product';
 
 import { MdOutlineClose } from 'react-icons/md';
 import Image from './common/Image';
+import FormattedPrice from './FormattedPrice';
 
 type CardItemProps = {
     item: IProduct;
@@ -44,7 +45,9 @@ const CartItem = ({ item }: CardItemProps) => {
                 />
             </div>
             <h2 className="w-52">{item.title}</h2>
-            <p className="w-10">${item.price}</p>
+            <p className="w-10">
+                <FormattedPrice amount={item.price} />
+            </p>
             <p className="text-sm">
                 <FormattedMessage id="product_quantity" />
             </p>
@@ -64,7 +67,9 @@ const CartItem = ({ item }: CardItemProps) => {
                     +
                 </button>
             </div>
-            <p className="w-14">${item.quantity * item.price}</p>
+            <p className="w-14">
+                <FormattedPrice amount={item.quantity * item.price} />
+            </p>
         </div>
     );
 };

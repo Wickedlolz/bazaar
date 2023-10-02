@@ -17,6 +17,7 @@ import CartItem from '../components/CartItem';
 import CartHeader from '../assets/cart-header.jpeg';
 import EmptyCard from '../components/EmptyCard';
 import Image from '../components/common/Image';
+import FormattedPrice from '../components/FormattedPrice';
 
 const Cart = () => {
     const { productData } = useAppSelector((state) => state.cart);
@@ -129,9 +130,10 @@ const Cart = () => {
                         </h2>
                         <p className="flex items-center gap-4 text-base">
                             <FormattedMessage id="cart_subtotal" />{' '}
-                            <span className="font-bold text-lg">
-                                $ {totalAmount}
-                            </span>
+                            <FormattedPrice
+                                amount={totalAmount}
+                                className="font-bold text-lg"
+                            />
                         </p>
                         <p className="flex items-start gap-4 text-base">
                             <FormattedMessage id="cart_shipping" />{' '}
@@ -143,9 +145,10 @@ const Cart = () => {
                     </div>
                     <p className="font-semibold flex justify-between mt-6">
                         <FormattedMessage id="cart_total" />{' '}
-                        <span className="text-xl font-bold">
-                            $ {totalAmount}
-                        </span>
+                        <FormattedPrice
+                            amount={totalAmount}
+                            className="text-xl font-bold"
+                        />
                     </p>
                     <button
                         onClick={handleCheckout}
