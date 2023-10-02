@@ -2,10 +2,10 @@ import { useState, useMemo } from 'react';
 import { useAppSelector } from '../store';
 import { Helmet } from 'react-helmet-async';
 import { useIntl, FormattedMessage } from 'react-intl';
+import { IPrice } from '../interfaces/price';
 
 import ProductBanner from '../components/ProductBanner';
 import ShopSideNav from '../components/ShopSideNav';
-import { IPrice } from '../interfaces/price';
 import Pagination from '../components/Pagination';
 
 const Shop = () => {

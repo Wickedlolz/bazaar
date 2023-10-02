@@ -8,20 +8,20 @@ import { IProduct } from '../interfaces/product';
 
 import Image from '../components/common/Image';
 import Spinner from '../components/common/Spinner';
+import { calculateTotalAmount } from '../utils';
 
 const OrderHistory = () => {
     const intl = useIntl();
     const { user } = useFirebaseContext();
     const [orderData, setOrderData] = useState<IProduct[] | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [totalAmount, setTotalAmount] = useState<string>('');
+    const totalAmount = calculateTotalAmount(orderData || []);
 
     useEffect(() => {
         setIsLoading(true);
         if (user?.email) {
-            productService.getOrders(user.email).then((orders) => {
-                setOrderData(orders.products);
-                setTotalAmount(orders.totalAmount);
+            productService.getOrders(user.email).then((products) => {
+                setOrderData(products);
                 setIsLoading(false);
             });
         }

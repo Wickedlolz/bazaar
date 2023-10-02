@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFirebaseContext } from '../contexts/FirebaseContext';
 import { useAppDispatch, useAppSelector } from '../store';
@@ -9,6 +9,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 import { addUserOrder, makePayment } from '../services/productService';
 import { IOrder } from '../interfaces/order';
+import { calculateTotalAmount } from '../utils';
 
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 
@@ -22,18 +23,8 @@ const Cart = () => {
     const dispatch = useAppDispatch();
     const { user } = useFirebaseContext();
     const intl = useIntl();
-    const [totalAmount, setTotalAmount] = useState<number>(0);
+    const totalAmount = calculateTotalAmount(productData);
     const [canPay, setCanPay] = useState<boolean>(false);
-
-    useEffect(() => {
-        const price = productData.reduce(
-            (accumulator, currentValue) =>
-                accumulator + currentValue.price * currentValue.quantity,
-            0
-        );
-
-        setTotalAmount(Number(price.toFixed(2)));
-    }, [productData]);
 
     /**
      * Resets the shopping cart and displays an error toast message to notify the user
