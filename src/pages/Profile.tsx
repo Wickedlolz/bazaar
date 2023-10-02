@@ -1,4 +1,4 @@
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Helmet } from 'react-helmet-async';
 import { useFirebaseContext } from '../contexts/FirebaseContext';
@@ -55,12 +55,6 @@ const Profile = () => {
                     >
                         <FormattedMessage id="auth_sign_out" />
                     </button>
-                    <Link
-                        to="/order-history"
-                        className="bg-black text-white dark:bg-white dark:text-black text-base py-3 px-8 tracking-wide rounded-md hover:bg-gray-800 duration-300"
-                    >
-                        <FormattedMessage id="profile-your-orders" />
-                    </Link>
                 </div>
             </section>
         </div>

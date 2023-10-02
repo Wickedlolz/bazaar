@@ -13,7 +13,6 @@ import Shop from '../pages/Shop';
 import NotFound from '../pages/NotFound';
 import Profile from '../pages/Profile';
 import Login from '../pages/Login';
-import OrderHistory from '../pages/OrderHistory';
 import AuthGuard from '../components/AuthGuard';
 import GuestGuard from '../components/GuestGuard';
 
@@ -29,9 +28,6 @@ const router = createBrowserRouter(
             </Route>
             <Route path="/profile" element={<AuthGuard />}>
                 <Route index element={<Profile />} />
-            </Route>
-            <Route path="/order-history" element={<AuthGuard />}>
-                <Route index element={<OrderHistory />} />
             </Route>
             <Route path="*" element={<NotFound />} />
         </Route>
