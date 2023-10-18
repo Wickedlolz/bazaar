@@ -1,7 +1,4 @@
-type FormattedPriceProps = {
-    amount: number;
-    className?: string;
-};
+import { FormattedPriceProps } from '../types';
 
 const FormattedPrice = ({ amount, className }: FormattedPriceProps) => {
     const formattedAmount = Number(amount).toLocaleString('en-US', {

@@ -1,14 +1,6 @@
 import { memo } from 'react';
 import useProgressiveImg from '../../hooks/useProgressiveImg';
-
-type ImageProps = {
-    src: string;
-    alt: string;
-    classes?: string;
-    width?: number;
-    height?: number;
-    lazy?: boolean;
-};
+import { ImageProps } from '../../types';
 
 const Image = ({ src, classes, alt, width, height, lazy }: ImageProps) => {
     const [source, loading] = useProgressiveImg(src);

@@ -6,16 +6,11 @@ import {
 } from '../store/reducers/cartSlice';
 import { toast } from 'react-toastify';
 import { FormattedMessage, useIntl } from 'react-intl';
-
-import { IProduct } from '../interfaces/product';
+import { CardItemProps } from '../types';
 
 import { MdOutlineClose } from 'react-icons/md';
 import Image from './common/Image';
 import FormattedPrice from './FormattedPrice';
-
-type CardItemProps = {
-    item: IProduct;
-};
 
 const CartItem = ({ item }: CardItemProps) => {
     const dispatch = useAppDispatch();

@@ -1,9 +1,5 @@
+import { NavTitleProps } from '../types';
 import { BiCaretDown } from 'react-icons/bi';
-
-type NavTitleProps = {
-    title: string;
-    icons: boolean;
-};
 
 const NavTitle = ({ title, icons }: NavTitleProps) => {
     return (

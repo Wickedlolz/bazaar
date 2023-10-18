@@ -1,10 +1,4 @@
-import {
-    ReactNode,
-    createContext,
-    useContext,
-    useEffect,
-    useState,
-} from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { auth, googleProvider } from '../firebase-config';
 import {
@@ -14,6 +8,7 @@ import {
     User,
     UserCredential,
 } from 'firebase/auth';
+import { FirebaseProviderProps } from '../types';
 
 interface FirebaseInitialState {
     user: User | null;
@@ -40,11 +35,7 @@ export const FirebaseContext = createContext<FirebaseInitialState>({
     },
 });
 
-interface IProps {
-    children: ReactNode;
-}
-
-export const FirebaseProvider = ({ children }: IProps) => {
+export const FirebaseProvider = ({ children }: FirebaseProviderProps) => {
     const [user, setUser] = useState<User | null>(null);
 
     const signInWithGoogle = () => signInWithPopup(auth, googleProvider);

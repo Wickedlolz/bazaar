@@ -1,14 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import Image from './common/Image';
-
-type CategoryItemProps = {
-    item: {
-        id: number;
-        img: string;
-        title: string;
-    };
-};
+import { CategoryItemProps } from '../types';
 
 const CategoryItem = ({ item }: CategoryItemProps) => {
     return (

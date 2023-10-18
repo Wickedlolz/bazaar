@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import { IProduct } from '../interfaces/product';
+import { ShopCardProps } from '../types';
 
 import Image from './common/Image';
-
-type ShopCardProps = {
-    product: IProduct;
-};
 
 const ShopCard = ({ product }: ShopCardProps) => {
     return (

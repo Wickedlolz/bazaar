@@ -1,8 +1,5 @@
 import { FormattedMessage } from 'react-intl';
-
-type BannerTextProps = {
-    title: string;
-};
+import { BannerTextProps } from '../types';
 
 const BannerText = ({ title }: BannerTextProps) => {
     return (

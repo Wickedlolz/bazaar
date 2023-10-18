@@ -1,17 +1,10 @@
-import { Dispatch, SetStateAction, memo } from 'react';
+import { memo } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { ProductBannerProps } from '../types';
 
 import { BsGridFill } from 'react-icons/bs';
 import { ImList } from 'react-icons/im';
 import { GoTriangleDown } from 'react-icons/go';
-
-type ProductBannerProps = {
-    itemsPerPageFromBanner: (page: number) => void;
-    girdViewActive: boolean;
-    listViewActive: boolean;
-    setGridViewActive: Dispatch<SetStateAction<boolean>>;
-    setListViewActive: Dispatch<SetStateAction<boolean>>;
-};
 
 const ProductBanner = ({
     itemsPerPageFromBanner,

@@ -4,14 +4,10 @@ import { addToCart } from '../store/reducers/cartSlice';
 import { FormattedMessage } from 'react-intl';
 import { toast } from 'react-toastify';
 
-import { IProduct } from '../interfaces/product';
+import { ProductCardProps } from '../types';
 
 import { BsArrowRight } from 'react-icons/bs';
 import Image from './common/Image';
-
-type ProductCardProps = {
-    product: IProduct;
-};
 
 const ProductCard = ({ product }: ProductCardProps) => {
     const dispatch = useAppDispatch();

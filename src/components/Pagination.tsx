@@ -1,15 +1,9 @@
 import { useEffect, useState, memo } from 'react';
 import ReactPaginate from 'react-paginate';
-import { IProduct } from '../interfaces/product';
+import { productService } from '../services';
+import { PaginationProps } from '../types';
 
 import ShopCard from './ShopCard';
-import { productService } from '../services';
-
-type PaginationProps = {
-    itemsPerPage: number;
-    products: IProduct[];
-    girdViewActive: boolean;
-};
 
 const Pagination = ({
     itemsPerPage,
