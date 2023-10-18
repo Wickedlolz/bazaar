@@ -1,9 +1,9 @@
 import { useEffect, useState, memo } from 'react';
-import { getItemsCount } from '../services/productService';
 import ReactPaginate from 'react-paginate';
 import { IProduct } from '../interfaces/product';
 
 import ShopCard from './ShopCard';
+import { productService } from '../services';
 
 type PaginationProps = {
     itemsPerPage: number;
@@ -21,7 +21,7 @@ const Pagination = ({
     const [itemsCount, setItemsCount] = useState<number>(0);
 
     useEffect(() => {
-        getItemsCount().then((snapshot) => {
+        productService.getItemsCount().then((snapshot) => {
             setItemsCount(snapshot.data().count);
         });
     }, []);
