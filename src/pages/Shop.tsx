@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { useAppSelector } from '../store';
 import { Helmet } from 'react-helmet-async';
 import { useIntl, FormattedMessage } from 'react-intl';
@@ -28,27 +28,22 @@ const Shop = () => {
         setItemsPerPage(itemsPerPage);
     };
 
-    const filteredProducts = useMemo(() => {
-        const filteredProductsByCategory =
-            selectedCategory === 'all'
-                ? products
-                : products.filter(
-                      (product) => product.category === selectedCategory
-                  );
+    const filteredProductsByCategory =
+        selectedCategory === 'all'
+            ? products
+            : products.filter(
+                  (product) => product.category === selectedCategory
+              );
 
-        const finalFilteredProducts =
-            (selectedPriceRange as string) === 'all'
-                ? filteredProductsByCategory
-                : filteredProductsByCategory.filter(
-                      (product) =>
-                          product.price >=
-                              (selectedPriceRange as IPrice)?.priceOne &&
-                          product.price <=
-                              (selectedPriceRange as IPrice)?.priceTwo
-                  );
-
-        return finalFilteredProducts;
-    }, [products, selectedCategory, selectedPriceRange]);
+    const finalFilteredProducts =
+        (selectedPriceRange as string) === 'all'
+            ? filteredProductsByCategory
+            : filteredProductsByCategory.filter(
+                  (product) =>
+                      product.price >=
+                          (selectedPriceRange as IPrice)?.priceOne &&
+                      product.price <= (selectedPriceRange as IPrice)?.priceTwo
+              );
 
     return (
         <section className="max-w-container mx-auto px-4 dark-theme">
@@ -77,7 +72,7 @@ const Shop = () => {
                     <Pagination
                         itemsPerPage={itemsPerPage}
                         girdViewActive={girdViewActive}
-                        products={filteredProducts}
+                        products={finalFilteredProducts}
                     />
                 </div>
             </div>
