@@ -27,7 +27,7 @@ const AsideCategory = () => {
                     {items.map(({ _id, title, category, icons }) => (
                         <li
                             key={_id}
-                            onClick={(e) => dispatch(changeCategory(category))}
+                            onClick={() => dispatch(changeCategory(category))}
                             className={`border-b-[1px] border-b-[#F0F0F0] pb-2 flex items-center justify-between cursor-pointer ${
                                 selectedCategory === category &&
                                 'text-orange-900'
