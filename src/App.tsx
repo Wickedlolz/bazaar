@@ -7,6 +7,9 @@ import { FirebaseProvider } from './contexts/FirebaseContext';
 import Locales from './components/Locales';
 import AppRoutes from './routes/AppRoutes';
 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 const App = () => {
     const dispatch = useAppDispatch();
 

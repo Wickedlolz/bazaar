@@ -1,95 +1,86 @@
-import { useState, useEffect } from 'react';
-import { useIntl } from 'react-intl';
-import { HiArrowLeft, HiArrowRight } from 'react-icons/hi';
+import Slider from 'react-slick';
+import { PiCaretLeftLight, PiCaretRightLight } from 'react-icons/pi';
 
 import BannerImg1 from '../assets/img1.jpeg';
 import BannerImg2 from '../assets/img2.jpg';
 import BannerImg3 from '../assets/img3.jpg';
 import BannerImg4 from '../assets/img4.jpg';
-import BannerOne from '../assets/bannerone.jpeg';
-import BannerText from './BannerText';
+
+type ArrowProps = {
+    onClick?: () => void;
+};
 
 const Banner = () => {
-    const intl = useIntl();
-    const [currentSlide, setCurrentSlide] = useState<number>(0);
+    const PrevArrow = (props: ArrowProps) => {
+        const { onClick } = props;
 
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setCurrentSlide((prev) => (prev === 4 ? 0 : prev + 1));
-        }, 15000);
-
-        return () => clearInterval(intervalId);
-    }, []);
-
-    const prevSlide = () => {
-        setCurrentSlide(currentSlide === 0 ? 4 : (prev) => prev - 1);
+        return (
+            <div
+                onClick={onClick}
+                className="p-3 bg-slate-100 hover:text-orange-600 hover:bg-white cursor-pointer duration-200 rounded-full text-2xl flex items-center justify-center z-20 absolute left-2 top-1/2"
+            >
+                <PiCaretLeftLight />
+            </div>
+        );
     };
 
-    const nextSlide = () => {
-        setCurrentSlide(currentSlide === 4 ? 0 : (prev) => prev + 1);
+    const NextArrow = (props: ArrowProps) => {
+        const { onClick } = props;
+
+        return (
+            <div
+                className="p-3 bg-slate-100 hover:text-orange-600 hover:bg-white cursor-pointer duration-200 rounded-full text-2xl flex items-center justify-center z-20 absolute right-2 top-1/2"
+                onClick={onClick}
+            >
+                <PiCaretRightLight />
+            </div>
+        );
+    };
+
+    const settings = {
+        dots: false,
+        infinite: true,
+        autoplay: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
     };
 
     return (
-        <div className="w-full h-auto overflow-x-hidden">
-            <div className="w-full h-[650px] relative">
-                <div
-                    style={{
-                        transform: `translateX(-${currentSlide * 100}vw)`,
-                    }}
-                    className="w-[400vw] h-full flex transition-transform duration-1000"
-                >
-                    <img
-                        src={BannerOne}
-                        alt="Banner One"
-                        className="w-screen h-full object-cover"
-                    />
-                    <BannerText
-                        title={intl.formatMessage({ id: 'outwear_picks' })}
-                    />
-                    <img
-                        src={BannerImg1}
-                        alt="Banner  1"
-                        className="w-screen h-full object-cover"
-                        width={1000}
-                        height={500}
-                    />
-                    <img
-                        src={BannerImg2}
-                        alt="Banner  2"
-                        className="w-screen h-full object-cover"
-                        width={1000}
-                        height={500}
-                    />
-                    <img
-                        src={BannerImg3}
-                        alt="Banner img 3"
-                        className="w-screen h-full object-cover"
-                        width={1000}
-                        height={500}
-                    />
-                    <img
-                        src={BannerImg4}
-                        alt="Banner img 4"
-                        className="w-screen h-full object-cover"
-                        width={1000}
-                        height={500}
-                    />
-                </div>
-                <div className="absolute w-fit left-0 right-0 mx-auto flex gap-8 bottom-44">
-                    <div
-                        onClick={prevSlide}
-                        className="w-14 h-12 border-[1px] border-gray-700 flex items-center justify-center hover:cursor-pointer hover:bg-gray-700 hover:text-white active:bg-gray-900 duration-300"
-                    >
-                        <HiArrowLeft />
-                    </div>
-                    <div
-                        onClick={nextSlide}
-                        className="w-14 h-12 border-[1px] border-gray-700 flex items-center justify-center hover:cursor-pointer hover:bg-gray-700 hover:text-white active:bg-gray-900 duration-300"
-                    >
-                        <HiArrowRight />
-                    </div>
-                </div>
-            </div>
+        <div className="relative">
+            <Slider {...settings}>
+                <img
+                    src={BannerImg1}
+                    alt="Banner  1"
+                    className="w-screen h-full object-cover"
+                    width={1000}
+                    height={500}
+                />
+                <img
+                    src={BannerImg2}
+                    alt="Banner  2"
+                    className="w-screen h-full object-cover"
+                    width={1000}
+                    height={500}
+                />
+                <img
+                    src={BannerImg3}
+                    alt="Banner img 3"
+                    className="w-screen h-full object-cover"
+                    width={1000}
+                    height={500}
+                />
+                <img
+                    src={BannerImg4}
+                    alt="Banner img 4"
+                    className="w-screen h-full object-cover"
+                    width={1000}
+                    height={500}
+                />
+            </Slider>
         </div>
     );
 };
