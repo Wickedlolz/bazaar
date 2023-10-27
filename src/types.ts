@@ -61,3 +61,7 @@ export type ProductCardProps = {
 export type ShopCardProps = {
     product: IProduct;
 };
+
+export type ArrowProps = {
+    onClick?: () => void;
+};

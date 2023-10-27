@@ -1,14 +1,11 @@
 import Slider from 'react-slick';
 import { PiCaretLeftLight, PiCaretRightLight } from 'react-icons/pi';
+import { ArrowProps } from '../types';
 
 import BannerImg1 from '../assets/img1.jpeg';
 import BannerImg2 from '../assets/img2.jpg';
 import BannerImg3 from '../assets/img3.jpg';
 import BannerImg4 from '../assets/img4.jpg';
-
-type ArrowProps = {
-    onClick?: () => void;
-};
 
 const Banner = () => {
     const PrevArrow = (props: ArrowProps) => {
