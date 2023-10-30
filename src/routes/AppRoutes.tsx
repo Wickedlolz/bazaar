@@ -13,8 +13,8 @@ import Shop from '../pages/Shop';
 import NotFound from '../pages/NotFound';
 import Profile from '../pages/Profile';
 import Login from '../pages/Login';
-import AuthGuard from '../components/AuthGuard';
-import GuestGuard from '../components/GuestGuard';
+import AuthGuard from '../components/guards/AuthGuard';
+import GuestGuard from '../components/guards/GuestGuard';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
