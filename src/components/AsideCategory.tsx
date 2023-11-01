@@ -23,7 +23,7 @@ const AsideCategory = () => {
                 icons={false}
             />
             <div>
-                <ul className="flex flex-col gap-4 text-sm lg:text-base text-[#767676]">
+                <ul className="flex flex-col gap-4 text-sm lg:text-base text-[#767676] dark:text-white">
                     {items.map(({ _id, title, category, icons }) => (
                         <li
                             key={_id}
@@ -31,7 +31,7 @@ const AsideCategory = () => {
                             className={`border-b-[1px] border-b-[#F0F0F0] pb-2 flex items-center justify-between cursor-pointer ${
                                 selectedCategory === category &&
                                 'text-orange-900'
-                            }`}
+                            } hover:text-primeColor dark:hover:text-orange-900 hover:border-gray-400`}
                         >
                             {title}
                             {icons && (

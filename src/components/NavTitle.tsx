@@ -6,14 +6,14 @@ const NavTitle = ({ title, icons }: NavTitleProps) => {
         <div className="flex items-center justify-between pb-5">
             {icons ? (
                 <>
-                    <h3 className="font-bold lg:text-xl text-primeColor">
+                    <h3 className="font-bold lg:text-xl text-primeColor dark:text-white">
                         {title}
                     </h3>
                     {icons && <BiCaretDown />}
                 </>
             ) : (
                 <>
-                    <h3 className="font-bold lg:text-xl text-primeColor">
+                    <h3 className="font-bold lg:text-xl text-primeColor dark:text-white">
                         {title}
                     </h3>
                 </>
