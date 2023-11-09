@@ -35,14 +35,16 @@ const Profile = () => {
             </Helmet>
             <section className="w-full flex flex-col items-center justify-center gap-10 py-20">
                 <div className="w-[50%] flex items-center justify-center gap-5">
-                    <Image
-                        classes="rounded-full"
-                        src={user?.photoURL!}
-                        width={80}
-                        height={80}
-                        alt="User Avatar"
-                        lazy
-                    />
+                    {user?.photoURL && (
+                        <Image
+                            classes="rounded-full"
+                            src={user?.photoURL!}
+                            width={80}
+                            height={80}
+                            alt="User Avatar"
+                            lazy
+                        />
+                    )}
                     <div className="">
                         <p className="font-bold">{user?.displayName}</p>
                         <p className="font-semibold">{user?.email}</p>
