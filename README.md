@@ -23,9 +23,9 @@ Bazaar is a shopping app that allows users to browse and purchase items from var
 
 1. Clone the repository:
 
-    `git clone https://github.com/your-username/bazaar-shopping-app.git`
+    `git clone https://github.com/Wickedlolz/bazaar.git`
 
-    `cd bazaar-shopping-app`
+    `cd bazaar`
 
 2. Install dependencies:
 
