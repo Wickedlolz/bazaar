@@ -1,44 +1,67 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { auth, googleProvider } from '../firebase-config';
+import { auth, db, googleProvider } from '../firebase-config';
 import {
     signOut,
     onAuthStateChanged,
     signInWithPopup,
     User,
     UserCredential,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
 } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import { FirebaseProviderProps } from '../types';
 
 interface FirebaseInitialState {
     user: User | null;
-    signInWithGoogle: () => Promise<UserCredential>;
+    signInWithGoogle: () => Promise<void>;
+    signUp: (email: string, password: string) => Promise<void>;
+    signIn: (email: string, password: string) => Promise<UserCredential>;
     logOut: () => Promise<void>;
 }
 
 export const FirebaseContext = createContext<FirebaseInitialState>({
     user: null,
     signInWithGoogle: async () => {
-        try {
-            const result = await signInWithPopup(auth, googleProvider);
-            return result;
-        } catch (error) {
-            throw error;
-        }
+        const result = await signInWithPopup(auth, googleProvider);
+        await setDoc(doc(db, 'users', result.user.email!), {
+            role: 2,
+        });
     },
-    logOut: async () => {
-        try {
-            await signOut(auth);
-        } catch (error) {
-            throw error;
-        }
+    signUp: async (email, password) => {
+        await createUserWithEmailAndPassword(auth, email, password);
+        await setDoc(doc(db, 'users', email), {
+            role: 2,
+        });
+    },
+    signIn: (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password);
+    },
+    logOut: () => {
+        return signOut(auth);
     },
 });
 
 export const FirebaseProvider = ({ children }: FirebaseProviderProps) => {
     const [user, setUser] = useState<User | null>(null);
 
-    const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
+    const signInWithGoogle = async () => {
+        const result = await signInWithPopup(auth, googleProvider);
+        await setDoc(doc(db, 'users', result.user.email!), {
+            role: 2,
+        });
+    };
+
+    const signUp = async (email: string, password: string) => {
+        await createUserWithEmailAndPassword(auth, email, password);
+        await setDoc(doc(db, 'users', email), {
+            role: 2,
+        });
+    };
+
+    const signIn = (email: string, password: string) =>
+        signInWithEmailAndPassword(auth, email, password);
 
     const logOut = () => signOut(auth);
 
@@ -55,6 +78,8 @@ export const FirebaseProvider = ({ children }: FirebaseProviderProps) => {
             value={{
                 user,
                 signInWithGoogle,
+                signUp,
+                signIn,
                 logOut,
             }}
         >
